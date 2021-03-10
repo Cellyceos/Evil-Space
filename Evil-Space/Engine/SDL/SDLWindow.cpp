@@ -68,6 +68,12 @@ int32 SDLWindow::GetHeight() const
 	return Height;
 }
 
+void SDLWindow::SendQuitMessage()
+{
+	SDL_Event exitEvent = { SDL_QUIT };
+	SDL_PushEvent(&exitEvent);
+}
+
 bool SDLWindow::HandleEvents()
 {
 	SDL_Event Event;

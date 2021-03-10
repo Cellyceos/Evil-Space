@@ -8,9 +8,6 @@
 
 #include "Screens/AScreensManager.h"
 
-#include "SDL_events.h"
-#include "SDL_log.h"
-
 
 AScreensManager::AScreensManager(const TSharedPtr<IScreensCreator>& InScreensCreator) : ScreensCreator(InScreensCreator)
 {
@@ -81,8 +78,7 @@ void AScreensManager::TransitState()
 
 void AScreensManager::RequestToQuit()
 {
-	SDL_Event exitEvent = { SDL_QUIT };
-	SDL_PushEvent(&exitEvent);
+	AWindowClass::SendQuitMessage();
 }
 
 /// Begin IMessageHandler
