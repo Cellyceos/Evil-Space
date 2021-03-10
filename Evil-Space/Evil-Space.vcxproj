@@ -143,6 +143,7 @@
     <ClInclude Include="Engine\Screens\AScreenState.h" />
     <ClInclude Include="Engine\Screens\AScreensManager.h" />
     <ClInclude Include="Engine\SDL\SDLContext.h" />
+    <ClInclude Include="Engine\SDL\SDLInputKeys.h" />
     <ClInclude Include="Engine\SDL\SDLRenderer.h" />
     <ClInclude Include="Engine\SDL\SDLWindow.h" />
     <ClInclude Include="Engine\CoreMinimal.h" />

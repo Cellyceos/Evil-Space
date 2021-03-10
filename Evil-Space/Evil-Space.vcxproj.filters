@@ -133,6 +133,9 @@
     <ClInclude Include="EvilSpaceGame.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\SDL\SDLInputKeys.h">
+      <Filter>Source Files\Engine\SDL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Assets\Ammunitions\W02_F.tif">
