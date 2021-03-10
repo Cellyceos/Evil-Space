@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Evil Space", "Evil Space\Evil Space.vcxproj", "{103EE130-CD6C-4347-89E1-ABAD7E7A15A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiffManager", "DiffManager\DiffManager.csproj", "{E69C06AF-5B95-4599-BE5A-F6682BBAFF7B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiffManager", "Tools\DiffManager\DiffManager.csproj", "{E69C06AF-5B95-4599-BE5A-F6682BBAFF7B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AFCF9E87-C944-46DD-9A42-19B1DE3FA147}"
 	ProjectSection(SolutionItems) = preProject
@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{B5514FEB-269F-42A1-BDD2-226C8565FD70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +36,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E69C06AF-5B95-4599-BE5A-F6682BBAFF7B} = {B5514FEB-269F-42A1-BDD2-226C8565FD70}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6C1407EE-FCE2-48C8-A85E-B2456177F2CD}
