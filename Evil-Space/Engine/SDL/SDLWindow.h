@@ -34,6 +34,8 @@ public:
 
 	virtual void SetMessageHandler(const TSharedPtr<class IMessageHandler>& InMessageHandler) { MessageHandler = InMessageHandler; }
 
+	static void SendQuitMessage();
+
 private:
 	TSharedPtr<class IMessageHandler> MessageHandler = nullptr;
 	TSharedPtr<class SDLRenderer> Renderer = nullptr;

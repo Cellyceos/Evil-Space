@@ -31,11 +31,11 @@ protected:
     virtual void TransitState();
 
     /// Begin IMessageHandler
-    virtual void OnKeyDown(const struct SDL_KeyboardEvent& Event) override;
-    virtual void OnKeyUp(const struct SDL_KeyboardEvent& Event)  override;
-    virtual void OnMouseButtonDown(const struct SDL_MouseButtonEvent& Event) override;
-    virtual void OnMouseButtonUp(const struct SDL_MouseButtonEvent& Event) override;
-    virtual void OnMouseMotion(const struct SDL_MouseMotionEvent& Event)  override;
+    virtual void OnKeyDown(const FKeyboardEvent& Event) override;
+    virtual void OnKeyUp(const FKeyboardEvent& Event)  override;
+    virtual void OnMouseButtonDown(const FMouseButtonEvent& Event) override;
+    virtual void OnMouseButtonUp(const FMouseButtonEvent& Event) override;
+    virtual void OnMouseMotion(const FMouseMotionEvent& Event)  override;
 
     virtual void OnWindowsFocusGained() override;
     virtual void OnWindowsFocusLost() override;

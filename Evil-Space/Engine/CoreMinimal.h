@@ -19,3 +19,5 @@
 
 #include "SDL_log.h"
 #endif // USE_SDL
+
+#include "Input/InputEvents.h"

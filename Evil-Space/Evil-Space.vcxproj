@@ -137,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="Engine\BasicTypes.h" />
     <ClInclude Include="Engine\FixedFrameRate.h" />
+    <ClInclude Include="Engine\Input\InputEvents.h" />
     <ClInclude Include="Engine\Interfaces\IInputHendler.h" />
     <ClInclude Include="Engine\Interfaces\IMessageHendler.h" />
     <ClInclude Include="Engine\Interfaces\IScreensCreator.h" />

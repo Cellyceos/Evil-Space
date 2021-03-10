@@ -10,6 +10,8 @@
 
 #include "CoreMinimal.h"
 
+
+using FInputDelegate = TFunction<void(EInputState)>;
 class IInputHandler : public std::enable_shared_from_this<IInputHandler>
 {
 public:

@@ -83,31 +83,36 @@ bool SDLWindow::HandleEvents()
 		case SDL_KEYDOWN:
 			if (WindowID == Event.key.windowID && HasFocus() && MessageHandler)
 			{
-				MessageHandler->OnKeyDown(Event.key);
+				SDL_Log("Keyboard event: Key = %s, IsRepeat = %d, State = %s", SDL_GetKeyName(Event.key.keysym.sym), Event.key.repeat > 0, "PRESSED");
+				MessageHandler->OnKeyDown({ EInputState::Pressed, Event.key.repeat > 0, static_cast<EInputKey>(Event.key.keysym.sym) });
 			}
 			break;
 		case SDL_KEYUP:
 			if (WindowID == Event.key.windowID && HasFocus() && MessageHandler)
 			{
-				MessageHandler->OnKeyUp(Event.key);
+				SDL_Log("Keyboard event: Key = %s, IsRepeat = %d, State = %s", SDL_GetKeyName(Event.key.keysym.sym), Event.key.repeat > 0, "RELEASED");
+				MessageHandler->OnKeyUp({ EInputState::Released, Event.key.repeat > 0, static_cast<EInputKey>(Event.key.keysym.sym) });
 			}
 			break;
 		case SDL_MOUSEMOTION:
 			if (WindowID == Event.motion.windowID && HasFocus() && MessageHandler)
 			{
-				MessageHandler->OnMouseMotion(Event.motion);
+				SDL_Log("Mouse Motion event: X = %d, Y = %d, State = %d", Event.motion.x, Event.motion.y, Event.motion.state);
+				MessageHandler->OnMouseMotion({ Event.motion.state, Event.motion.x, Event.motion.y, Event.motion.xrel, Event.motion.yrel });
 			}
 			break;
 		case SDL_MOUSEBUTTONDOWN:
 			if (WindowID == Event.button.windowID && HasFocus() && MessageHandler)
 			{
-				MessageHandler->OnMouseButtonDown(Event.button);
+				SDL_Log("Mouse Button event: Button = %d, Clicks = %d, State = %s", Event.button.button, Event.button.clicks, "PRESSED");
+				MessageHandler->OnMouseButtonDown({ static_cast<EMouseButtonType>(Event.button.button), EInputState::Pressed, Event.button.clicks, Event.button.x, Event.button.y });
 			}
 			break;
 		case SDL_MOUSEBUTTONUP:
 			if (WindowID == Event.button.windowID && HasFocus() && MessageHandler)
 			{
-				MessageHandler->OnMouseButtonUp(Event.button);
+				SDL_Log("Mouse Button event: Button = %d, Clicks = %d, State = %s", Event.button.button, Event.button.clicks, "RELEASED");
+				MessageHandler->OnMouseButtonUp({ static_cast<EMouseButtonType>(Event.button.button), EInputState::Released, Event.button.clicks, Event.button.x, Event.button.y });
 			}
 			break;
 		case SDL_QUIT:

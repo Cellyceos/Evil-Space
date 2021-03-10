@@ -82,16 +82,15 @@ void AScreensManager::RequestToQuit()
 }
 
 /// Begin IMessageHandler
-void AScreensManager::OnKeyDown(const SDL_KeyboardEvent& Event)
+void AScreensManager::OnKeyDown(const FKeyboardEvent& Event)
 {
-	SDL_Log("Keyboard event: Key = %s, IsRepeat = %d, State = %s", SDL_GetKeyName(Event.keysym.sym), Event.repeat > 0, "PRESSED");
 	for (const auto& Screen : ActiveScreens)
 	{
 		if (Screen->HasBindings())
 		{
-			if (const auto& KeyDelegate = Screen->GetDelegateBoundToKey(static_cast<EInputKey>(Event.keysym.sym)))
+			if (const auto& KeyDelegate = Screen->GetDelegateBoundToKey(Event.Key))
 			{
-				KeyDelegate(static_cast<EInputEvent>(Event.state));
+				KeyDelegate(Event.State);
 			}
 		}
 
@@ -100,16 +99,15 @@ void AScreensManager::OnKeyDown(const SDL_KeyboardEvent& Event)
 	}
 }
 
-void AScreensManager::OnKeyUp(const SDL_KeyboardEvent& Event)
+void AScreensManager::OnKeyUp(const FKeyboardEvent& Event)
 {
-	SDL_Log("Keyboard event: Key = %s, IsRepeat = %d, State = %s", SDL_GetKeyName(Event.keysym.sym), Event.repeat > 0, "RELEASED");
 	for (const auto& Screen : ActiveScreens)
 	{
 		if (Screen->HasBindings())
 		{
-			if (const auto& KeyDelegate = Screen->GetDelegateBoundToKey(static_cast<EInputKey>(Event.keysym.sym)))
+			if (const auto& KeyDelegate = Screen->GetDelegateBoundToKey(Event.Key))
 			{
-				KeyDelegate(static_cast<EInputEvent>(Event.state));
+				KeyDelegate(Event.State);
 			}
 		}
 
@@ -118,19 +116,19 @@ void AScreensManager::OnKeyUp(const SDL_KeyboardEvent& Event)
 	}
 }
 
-void AScreensManager::OnMouseButtonDown(const SDL_MouseButtonEvent& Event)
+void AScreensManager::OnMouseButtonDown(const FMouseButtonEvent& Event)
 {
-	SDL_Log("Mouse Button event: Button = %d, Clicks = %d, State = %s", Event.button, Event.clicks, "PRESSED");
+
 }
 
-void AScreensManager::OnMouseButtonUp(const SDL_MouseButtonEvent& Event)
+void AScreensManager::OnMouseButtonUp(const FMouseButtonEvent& Event)
 {
-	SDL_Log("Mouse Button event: Button = %d, Clicks = %d, State = %s", Event.button, Event.clicks, "RELEASED");
+
 }
 
-void AScreensManager::OnMouseMotion(const SDL_MouseMotionEvent& Event)
+void AScreensManager::OnMouseMotion(const FMouseMotionEvent& Event)
 {
-	SDL_Log("Mouse Motion event: X = %d, Y = %d, State = %d", Event.x, Event.y, Event.state);
+
 }
 
 void AScreensManager::OnWindowsFocusGained()

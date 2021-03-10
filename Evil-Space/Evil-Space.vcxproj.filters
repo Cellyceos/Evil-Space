@@ -60,6 +60,9 @@
     <Filter Include="Resource Files\Stars">
       <UniqueIdentifier>{961fbde7-2034-4381-8d3d-ce3bfa5155d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Engine\Input">
+      <UniqueIdentifier>{f30f68b4-b596-42b7-a55b-cb4ce1d2340b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -135,6 +138,9 @@
     </ClInclude>
     <ClInclude Include="Engine\SDL\SDLInputKeys.h">
       <Filter>Source Files\Engine\SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Input\InputEvents.h">
+      <Filter>Source Files\Engine\Input</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

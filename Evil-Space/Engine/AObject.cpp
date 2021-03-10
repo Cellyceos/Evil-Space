@@ -8,6 +8,7 @@
 
 #include "AObject.h"
 
+
 void AObject::SetRect(const FRect& Rect) 
 { 
 	SetSize({ Rect.Width, Rect.Height });
