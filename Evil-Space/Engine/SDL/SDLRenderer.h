@@ -11,6 +11,7 @@
 #include "CoreMinimal.h"
 
 
+#ifdef USE_SDL_TTF
 enum class ETextJustify {
 	LeftTop,
 	LeftMiddle, 
@@ -38,6 +39,18 @@ struct FFontKey
 		return Left.FontSize > Right.FontSize && Left.FontName < Right.FontName;
 	}
 };
+#endif // USE_SDL_TTF
+
+
+#ifdef USE_SDL_IMG
+enum class EFlipOperation
+{
+	None,
+	Horizontal,
+	Vertical
+};
+#endif // USE_SDL_IMG
+
 
 class SDLRenderer
 {
@@ -51,7 +64,6 @@ public:
 	virtual void Present();
 
 	virtual void SetColor(const FColor& Color);
-	virtual void SetFont(const FStringView& FontName, const int32 FontSize);
 
 	// Rectangle
 	virtual void DrawRect(const FRect& Rect);
@@ -61,18 +73,32 @@ public:
 	virtual void DrawCircle(const FPoint& Center, float Radius);
 	virtual void FillCircle(const FPoint& Center, float Radius);
 
-	// Text
-	virtual void DrawText(const FStringView& Text, const FPoint& Position, ETextJustify Justify, const FColor& Color);
-
 	virtual struct SDL_Renderer* GetNativeRenderer() const { return NativeRenderer; }
 
 private:
 	struct SDL_Renderer* NativeRenderer = nullptr;
+
+#ifdef USE_SDL_TTF
+public:
+	virtual bool SetFont(const FStringView& FontName, const int32 FontSize);
+	virtual void DrawText(const FStringView& Text, const FPoint& Position, ETextJustify Justify, const FColor& Color);
+
+private:
 	struct _TTF_Font* CurrentFont = nullptr;
-
 	static TMap <FFontKey, struct _TTF_Font*> FontNameCache;
+#endif // USE_SDL_TTF
 
-#ifdef _DEBUG
+#ifdef USE_SDL_IMG
+public:
+	virtual void DrawImage(const FStringView& ImageName, const FPoint& Center, const float Rotation, const EFlipOperation Flip = EFlipOperation::None);
+
+private:
+	static TMap <FStringView, struct SDL_Texture*> ImageNameCache;
+#endif // USE_SDL_IMG
+
+
+#ifdef DEBUG_UI
+private:
 	static FColor DebugColor;
 #endif // _DEBUG
 };

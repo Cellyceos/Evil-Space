@@ -10,10 +10,10 @@
 
 #include "SDL.h"
 #include "SDL_ttf.h"
+#include "SDL_image.h"
 
-TMap <FFontKey, TTF_Font*> SDLRenderer::FontNameCache;
 
-#ifdef _DEBUG
+#ifdef DEBUG_UI
 FColor SDLRenderer::DebugColor{255, 0, 0, 255};
 #endif // _DEBUG
 
@@ -40,6 +40,8 @@ SDLRenderer::SDLRenderer(SDL_Renderer* Renderer) : NativeRenderer(Renderer)
 SDLRenderer::~SDLRenderer()
 {
 	SDL_Log("~SDLRenderer\n");
+
+#ifdef USE_SDL_TTF
 	for (auto& [FontKey, Font] : FontNameCache)
 	{
 		TTF_CloseFont(Font);
@@ -47,6 +49,17 @@ SDLRenderer::~SDLRenderer()
 	}
 
 	FontNameCache.clear();
+#endif
+
+#ifdef USE_SDL_IMG
+	for (auto& [ImageName, ImageTexture] : ImageNameCache)
+	{
+		SDL_DestroyTexture(ImageTexture);
+		ImageTexture = nullptr;
+	}
+
+	ImageNameCache.clear();
+#endif // USE_SDL_IMG
 
 	if (NativeRenderer)
 	{
@@ -64,27 +77,6 @@ void SDLRenderer::Clear(const FColor& Color)
 void SDLRenderer::SetColor(const FColor& Color)
 {
 	SDL_SetRenderDrawColor(NativeRenderer, Color.Red, Color.Green, Color.Blue, Color.Alpha);
-}
-
-void SDLRenderer::SetFont(const FStringView& FontName, const int32 FontSize)
-{
-	const FFontKey FontKey{ FontName, FontSize };
-	auto CachedFont = FontNameCache.find(FontKey);
-
-	if (CachedFont == FontNameCache.end())
-	{
-		CurrentFont = TTF_OpenFont(FontName.data(), FontSize);
-		if (!CurrentFont)
-		{
-			SDL_Log("TTF ERROR: %s", SDL_GetError());
-		}
-
-		FontNameCache.insert(std::make_pair(FontKey, CurrentFont));
-	}
-	else
-	{
-		CurrentFont = CachedFont->second;
-	}
 }
 
 void SDLRenderer::DrawRect(const FRect& Rect)
@@ -167,6 +159,38 @@ void SDLRenderer::FillCircle(const FPoint& Center, float Radius)
 	}
 }
 
+void SDLRenderer::Present()
+{
+	SDL_RenderPresent(NativeRenderer);
+}
+
+#ifdef USE_SDL_TTF
+TMap <FFontKey, TTF_Font*> SDLRenderer::FontNameCache;
+
+bool SDLRenderer::SetFont(const FStringView& FontName, const int32 FontSize)
+{
+	const FFontKey FontKey{ FontName, FontSize };
+	auto CachedFont = FontNameCache.find(FontKey);
+
+	if (CachedFont == FontNameCache.end())
+	{
+		CurrentFont = TTF_OpenFont(FontName.data(), FontSize);
+		if (!CurrentFont)
+		{
+			SDL_LogError(SDL_LOG_CATEGORY_RENDER, "TTF ERROR: %s", SDL_GetError());
+			return false;
+		}
+
+		FontNameCache.insert(std::make_pair(FontKey, CurrentFont));
+	}
+	else
+	{
+		CurrentFont = CachedFont->second;
+	}
+
+	return true;
+}
+
 void SDLRenderer::DrawText(const FStringView& Text, const FPoint& Position, ETextJustify Justify, const FColor& Color)
 {
 	SDL_Surface* Surface = TTF_RenderText_Blended(CurrentFont, Text.data(), { Color.Red, Color.Green, Color.Blue, Color.Alpha });
@@ -221,8 +245,34 @@ void SDLRenderer::DrawText(const FStringView& Text, const FPoint& Position, ETex
 	SDL_FreeSurface(Surface);
 	SDL_DestroyTexture(Texture);
 }
+#endif
 
-void SDLRenderer::Present()
+#ifdef USE_SDL_IMG
+TMap <FStringView, SDL_Texture*> SDLRenderer::ImageNameCache;
+
+void SDLRenderer::DrawImage(const FStringView& ImageName, const FPoint& Center, const float Rotation, const EFlipOperation Flip/* = EFlipOperation::None */)
 {
-	SDL_RenderPresent(NativeRenderer);
+	SDL_Texture* ImageTexture{ nullptr };
+
+	auto CachedImage = ImageNameCache.find(ImageName);
+
+	if (CachedImage == ImageNameCache.end())
+	{
+		ImageTexture = IMG_LoadTexture(NativeRenderer, ImageName.data());
+		if (!ImageTexture)
+		{
+			SDL_LogError(SDL_LOG_CATEGORY_RENDER, "IMG ERROR: %s", SDL_GetError());
+			return;
+		}
+
+		ImageNameCache.insert(std::make_pair(ImageName, ImageTexture));
+	}
+	else
+	{
+		ImageTexture = CachedImage->second;
+	}
+
+	const SDL_FPoint NativeCenter{ Center.X, Center.Y };
+	SDL_RenderCopyExF(NativeRenderer, ImageTexture, nullptr, nullptr, Rotation, &NativeCenter, static_cast<SDL_RendererFlip>(Flip));
 }
+#endif // USE_SDL_IMG
