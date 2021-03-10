@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx;h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{b6a04bfc-ffa2-428e-84af-c193380604cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Interfaces">
+      <UniqueIdentifier>{997d3356-5124-4d34-bb47-6e25945648e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\SDL">
+      <UniqueIdentifier>{1b5aa68e-6273-407e-b62d-fd3e4fd1baf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{27261ad1-efed-464d-a711-8fb9525f92ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Objects">
+      <UniqueIdentifier>{0b0a893c-194f-45b7-9b06-436cbb3a2300}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Fonts">
+      <UniqueIdentifier>{31869043-591c-444a-a6b8-d825da317d6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Screens">
+      <UniqueIdentifier>{2b45bb57-83a5-4eca-8921-d4f31199a049}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine\Screens">
+      <UniqueIdentifier>{78be42b1-4ee3-4bfb-b5bc-bb61231aa5c8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Engine\SDL\SDLWindow.cpp">
+      <Filter>Source Files\Engine\SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL\SDLContext.cpp">
+      <Filter>Source Files\Engine\SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\SDL\SDLRenderer.cpp">
+      <Filter>Source Files\Engine\SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\FixedFrameRate.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Screens\AScreensManager.cpp">
+      <Filter>Source Files\Engine\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\Screens\AScreenState.cpp">
+      <Filter>Source Files\Engine\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine\AObject.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="EvilSpaceGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine\SDL\SDLWindow.h">
+      <Filter>Source Files\Engine\SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SDL\SDLContext.h">
+      <Filter>Source Files\Engine\SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\SDL\SDLRenderer.h">
+      <Filter>Source Files\Engine\SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\CoreMinimal.h">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\FixedFrameRate.h">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\AObject.h">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Interfaces\IMessageHendler.h">
+      <Filter>Source Files\Engine\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\BasicTypes.h">
+      <Filter>Source Files\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Screens\AScreensManager.h">
+      <Filter>Source Files\Engine\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Screens\AScreenState.h">
+      <Filter>Source Files\Engine\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Interfaces\IInputHendler.h">
+      <Filter>Source Files\Engine\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine\Interfaces\IScreensCreator.h">
+      <Filter>Source Files\Engine\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="EvilSpaceGame.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
