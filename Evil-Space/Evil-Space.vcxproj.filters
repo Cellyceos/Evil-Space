@@ -24,14 +24,41 @@
     <Filter Include="Source Files\Game\Objects">
       <UniqueIdentifier>{0b0a893c-194f-45b7-9b06-436cbb3a2300}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Fonts">
-      <UniqueIdentifier>{31869043-591c-444a-a6b8-d825da317d6e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Game\Screens">
       <UniqueIdentifier>{2b45bb57-83a5-4eca-8921-d4f31199a049}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Engine\Screens">
       <UniqueIdentifier>{78be42b1-4ee3-4bfb-b5bc-bb61231aa5c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Asteroids">
+      <UniqueIdentifier>{bf9b9b4a-e158-405c-b0f7-06ffc675f485}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Ammunitions">
+      <UniqueIdentifier>{4b67ec97-dd5e-44f4-9f2d-3b6a8557e124}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Backgrounds">
+      <UniqueIdentifier>{61bce44f-6097-4c7d-ac77-64e349094366}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\UI">
+      <UniqueIdentifier>{394f1b08-6f8d-4046-9530-cc2d3c1c7648}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\UI\Fonts">
+      <UniqueIdentifier>{31869043-591c-444a-a6b8-d825da317d6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\UI\Buttons">
+      <UniqueIdentifier>{251124df-34c5-498f-b202-db836d0638b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Bonuses">
+      <UniqueIdentifier>{c5aad071-4559-4e9c-a132-cf284dae3f3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Effects">
+      <UniqueIdentifier>{ee9df7f2-ec59-4809-b9b9-962af412c8a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Ships">
+      <UniqueIdentifier>{c3c212c1-7b26-46c3-8597-20aa8f138ba1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Stars">
+      <UniqueIdentifier>{961fbde7-2034-4381-8d3d-ce3bfa5155d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -106,5 +133,217 @@
     <ClInclude Include="EvilSpaceGame.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Assets\Ammunitions\W02_F.tif">
+      <Filter>Resource Files\Ammunitions</Filter>
+    </Image>
+    <Image Include="..\Assets\Ammunitions\W03_F.tif">
+      <Filter>Resource Files\Ammunitions</Filter>
+    </Image>
+    <Image Include="..\Assets\Ammunitions\W09_F.tif">
+      <Filter>Resource Files\Ammunitions</Filter>
+    </Image>
+    <Image Include="..\Assets\Ammunitions\W15_F.tif">
+      <Filter>Resource Files\Ammunitions</Filter>
+    </Image>
+    <Image Include="..\Assets\Asteroids\00.tif">
+      <Filter>Resource Files\Asteroids</Filter>
+    </Image>
+    <Image Include="..\Assets\Asteroids\01.tif">
+      <Filter>Resource Files\Asteroids</Filter>
+    </Image>
+    <Image Include="..\Assets\Asteroids\02.tif">
+      <Filter>Resource Files\Asteroids</Filter>
+    </Image>
+    <Image Include="..\Assets\Asteroids\03.tif">
+      <Filter>Resource Files\Asteroids</Filter>
+    </Image>
+    <Image Include="..\Assets\Asteroids\04.tif">
+      <Filter>Resource Files\Asteroids</Filter>
+    </Image>
+    <Image Include="..\Assets\Asteroids\05.tif">
+      <Filter>Resource Files\Asteroids</Filter>
+    </Image>
+    <Image Include="..\Assets\Asteroids\06.tif">
+      <Filter>Resource Files\Asteroids</Filter>
+    </Image>
+    <Image Include="..\Assets\Asteroids\07.tif">
+      <Filter>Resource Files\Asteroids</Filter>
+    </Image>
+    <Image Include="..\Assets\Asteroids\08.tif">
+      <Filter>Resource Files\Asteroids</Filter>
+    </Image>
+    <Image Include="..\Assets\Asteroids\09.tif">
+      <Filter>Resource Files\Asteroids</Filter>
+    </Image>
+    <Image Include="..\Assets\Asteroids\10.tif">
+      <Filter>Resource Files\Asteroids</Filter>
+    </Image>
+    <Image Include="..\Assets\Asteroids\11.tif">
+      <Filter>Resource Files\Asteroids</Filter>
+    </Image>
+    <Image Include="..\Assets\Asteroids\Blue01.tif">
+      <Filter>Resource Files\Asteroids</Filter>
+    </Image>
+    <Image Include="..\Assets\Asteroids\Blue02.tif">
+      <Filter>Resource Files\Asteroids</Filter>
+    </Image>
+    <Image Include="..\Assets\Asteroids\Blue03.tif">
+      <Filter>Resource Files\Asteroids</Filter>
+    </Image>
+    <Image Include="..\Assets\Asteroids\Blue04.tif">
+      <Filter>Resource Files\Asteroids</Filter>
+    </Image>
+    <Image Include="..\Assets\Backgrounds\bg.tif">
+      <Filter>Resource Files\Backgrounds</Filter>
+    </Image>
+    <Image Include="..\Assets\Backgrounds\IMG.tif">
+      <Filter>Resource Files\Backgrounds</Filter>
+    </Image>
+    <Image Include="..\Assets\UI\Buttons\About.tif">
+      <Filter>Resource Files\UI\Buttons</Filter>
+    </Image>
+    <Image Include="..\Assets\UI\Buttons\Exit.tif">
+      <Filter>Resource Files\UI\Buttons</Filter>
+    </Image>
+    <Image Include="..\Assets\UI\Buttons\Load.tif">
+      <Filter>Resource Files\UI\Buttons</Filter>
+    </Image>
+    <Image Include="..\Assets\UI\Buttons\New.tif">
+      <Filter>Resource Files\UI\Buttons</Filter>
+    </Image>
+    <Image Include="..\Assets\UI\Buttons\Records.tif">
+      <Filter>Resource Files\UI\Buttons</Filter>
+    </Image>
+    <Image Include="..\Assets\UI\Buttons\Settings.tif">
+      <Filter>Resource Files\UI\Buttons</Filter>
+    </Image>
+    <Image Include="..\Assets\Bonuses\1_01.tif">
+      <Filter>Resource Files\Bonuses</Filter>
+    </Image>
+    <Image Include="..\Assets\Bonuses\1_02.tif">
+      <Filter>Resource Files\Bonuses</Filter>
+    </Image>
+    <Image Include="..\Assets\Bonuses\1_03.tif">
+      <Filter>Resource Files\Bonuses</Filter>
+    </Image>
+    <Image Include="..\Assets\Bonuses\Battery.tif">
+      <Filter>Resource Files\Bonuses</Filter>
+    </Image>
+    <Image Include="..\Assets\Bonuses\Health.tif">
+      <Filter>Resource Files\Bonuses</Filter>
+    </Image>
+    <Image Include="..\Assets\Bonuses\Invisibility.tif">
+      <Filter>Resource Files\Bonuses</Filter>
+    </Image>
+    <Image Include="..\Assets\Bonuses\Power.tif">
+      <Filter>Resource Files\Bonuses</Filter>
+    </Image>
+    <Image Include="..\Assets\Bonuses\Ring.tif">
+      <Filter>Resource Files\Bonuses</Filter>
+    </Image>
+    <Image Include="..\Assets\Bonuses\Shield.tif">
+      <Filter>Resource Files\Bonuses</Filter>
+    </Image>
+    <Image Include="..\Assets\Bonuses\Unknown.tif">
+      <Filter>Resource Files\Bonuses</Filter>
+    </Image>
+    <Image Include="..\Assets\Effects\Bomb.tif">
+      <Filter>Resource Files\Effects</Filter>
+    </Image>
+    <Image Include="..\Assets\Effects\des.tif">
+      <Filter>Resource Files\Effects</Filter>
+    </Image>
+    <Image Include="..\Assets\Effects\Expl0.tif">
+      <Filter>Resource Files\Effects</Filter>
+    </Image>
+    <Image Include="..\Assets\Effects\Expl1.tif">
+      <Filter>Resource Files\Effects</Filter>
+    </Image>
+    <Image Include="..\Assets\Effects\ExplM.tif">
+      <Filter>Resource Files\Effects</Filter>
+    </Image>
+    <Image Include="..\Assets\Effects\W02a_F.tif">
+      <Filter>Resource Files\Effects</Filter>
+    </Image>
+    <Image Include="..\Assets\Effects\W03a_F.tif">
+      <Filter>Resource Files\Effects</Filter>
+    </Image>
+    <Image Include="..\Assets\Effects\W04a_F.tif">
+      <Filter>Resource Files\Effects</Filter>
+    </Image>
+    <Image Include="..\Assets\Effects\W09a_F.tif">
+      <Filter>Resource Files\Effects</Filter>
+    </Image>
+    <Image Include="..\Assets\Effects\W15a_F.tif">
+      <Filter>Resource Files\Effects</Filter>
+    </Image>
+    <Image Include="..\Assets\Ships\As.tif">
+      <Filter>Resource Files\Ships</Filter>
+    </Image>
+    <Image Include="..\Assets\Ships\blazer1s.tif">
+      <Filter>Resource Files\Ships</Filter>
+    </Image>
+    <Image Include="..\Assets\Ships\blazer2s.tif">
+      <Filter>Resource Files\Ships</Filter>
+    </Image>
+    <Image Include="..\Assets\Ships\blazer3s.tif">
+      <Filter>Resource Files\Ships</Filter>
+    </Image>
+    <Image Include="..\Assets\Ships\blazer4s.tif">
+      <Filter>Resource Files\Ships</Filter>
+    </Image>
+    <Image Include="..\Assets\Ships\keller1s.tif">
+      <Filter>Resource Files\Ships</Filter>
+    </Image>
+    <Image Include="..\Assets\Ships\keller2s.tif">
+      <Filter>Resource Files\Ships</Filter>
+    </Image>
+    <Image Include="..\Assets\Ships\keller3s.tif">
+      <Filter>Resource Files\Ships</Filter>
+    </Image>
+    <Image Include="..\Assets\Ships\keller4s.tif">
+      <Filter>Resource Files\Ships</Filter>
+    </Image>
+    <Image Include="..\Assets\Ships\Terron1s.tif">
+      <Filter>Resource Files\Ships</Filter>
+    </Image>
+    <Image Include="..\Assets\Ships\Terron2s.tif">
+      <Filter>Resource Files\Ships</Filter>
+    </Image>
+    <Image Include="..\Assets\Ships\Terron3s.tif">
+      <Filter>Resource Files\Ships</Filter>
+    </Image>
+    <Image Include="..\Assets\Ships\Terron4s.tif">
+      <Filter>Resource Files\Ships</Filter>
+    </Image>
+    <Image Include="..\Assets\Stars\Star00.tif">
+      <Filter>Resource Files\Stars</Filter>
+    </Image>
+    <Image Include="..\Assets\Stars\Star01.tif">
+      <Filter>Resource Files\Stars</Filter>
+    </Image>
+    <Image Include="..\Assets\Stars\Star02.tif">
+      <Filter>Resource Files\Stars</Filter>
+    </Image>
+    <Image Include="..\Assets\Stars\Star03.tif">
+      <Filter>Resource Files\Stars</Filter>
+    </Image>
+    <Image Include="..\Assets\Stars\Star04.tif">
+      <Filter>Resource Files\Stars</Filter>
+    </Image>
+    <Image Include="..\Assets\Stars\Star05.tif">
+      <Filter>Resource Files\Stars</Filter>
+    </Image>
+    <Image Include="..\Assets\Stars\Star06.tif">
+      <Filter>Resource Files\Stars</Filter>
+    </Image>
+    <Image Include="..\Assets\Stars\Star07.tif">
+      <Filter>Resource Files\Stars</Filter>
+    </Image>
+    <Image Include="..\Assets\Stars\Star08.tif">
+      <Filter>Resource Files\Stars</Filter>
+    </Image>
   </ItemGroup>
 </Project>
