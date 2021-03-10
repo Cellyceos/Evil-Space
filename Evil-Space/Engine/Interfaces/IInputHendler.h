@@ -17,7 +17,7 @@ public:
 	virtual ~IInputHandler() = default;
 
 	virtual bool HasBindings() const = 0;
-	virtual FInputDelegate GetDelegateBoundToKey(int32 KeyCode) const = 0;
+	virtual FInputDelegate GetDelegateBoundToKey(EInputKey KeyCode) const = 0;
 
-	virtual void BindKey(int32 KeyCode, FInputDelegate Func) = 0;
+	virtual void BindKey(EInputKey KeyCode, FInputDelegate Func) = 0;
 };

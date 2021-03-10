@@ -40,12 +40,12 @@ protected:
 /// Begin IInputHandler
 public:
 	virtual bool HasBindings() const override { return KeyBindings.size() > 0; }
-	virtual FInputDelegate GetDelegateBoundToKey(int32 KeyCode) const override;
+	virtual FInputDelegate GetDelegateBoundToKey(EInputKey KeyCode) const override;
 
 protected:
-	virtual void BindKey(int32 KeyCode, FInputDelegate Func) override;
+	virtual void BindKey(EInputKey KeyCode, FInputDelegate Func) override;
 
 private:
-	TUnorderedMap<int32, FInputDelegate> KeyBindings;
+	TUnorderedMap<EInputKey, FInputDelegate> KeyBindings;
 /// End IInputHandler
 };

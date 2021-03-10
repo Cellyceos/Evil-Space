@@ -19,13 +19,13 @@ void AScreenState::RequestTransition(int32 ScreenId)
 }
 
 /// Begin IInputHandler
-void AScreenState::BindKey(int32 KeyCode, FInputDelegate Func)
+void AScreenState::BindKey(EInputKey KeyCode, FInputDelegate Func)
 {
 	assert(KeyBindings.find(KeyCode) == KeyBindings.end());
 	KeyBindings.insert(std::make_pair(KeyCode, std::move(Func)));
 }
 
-FInputDelegate AScreenState::GetDelegateBoundToKey(int32 KeyCode) const
+FInputDelegate AScreenState::GetDelegateBoundToKey(EInputKey KeyCode) const
 {
 	auto KeyIter = KeyBindings.find(KeyCode);
 	if (KeyIter != KeyBindings.end())

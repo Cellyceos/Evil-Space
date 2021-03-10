@@ -93,7 +93,7 @@ void AScreensManager::OnKeyDown(const SDL_KeyboardEvent& Event)
 	{
 		if (Screen->HasBindings())
 		{
-			if (const auto& KeyDelegate = Screen->GetDelegateBoundToKey(Event.keysym.sym))
+			if (const auto& KeyDelegate = Screen->GetDelegateBoundToKey(static_cast<EInputKey>(Event.keysym.sym)))
 			{
 				KeyDelegate(static_cast<EInputEvent>(Event.state));
 			}
@@ -111,7 +111,7 @@ void AScreensManager::OnKeyUp(const SDL_KeyboardEvent& Event)
 	{
 		if (Screen->HasBindings())
 		{
-			if (const auto& KeyDelegate = Screen->GetDelegateBoundToKey(Event.keysym.sym))
+			if (const auto& KeyDelegate = Screen->GetDelegateBoundToKey(static_cast<EInputKey>(Event.keysym.sym)))
 			{
 				KeyDelegate(static_cast<EInputEvent>(Event.state));
 			}
