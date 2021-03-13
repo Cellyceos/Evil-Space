@@ -8,6 +8,7 @@
 
 #include "SDL/SDLContext.h"
 
+#ifdef USE_SDL
 #include "SDL.h"
 #include "SDL_ttf.h"
 #include "SDL_image.h"
@@ -58,3 +59,4 @@ SDLContext::~SDLContext()
 
 	SDL_Quit();
 }
+#endif // USE_SDL
