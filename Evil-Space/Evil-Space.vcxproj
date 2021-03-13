@@ -141,6 +141,7 @@
     <ClInclude Include="Engine\Interfaces\IInputHendler.h" />
     <ClInclude Include="Engine\Interfaces\IMessageHendler.h" />
     <ClInclude Include="Engine\Interfaces\IScreensCreator.h" />
+    <ClInclude Include="Engine\Logging\Macros.h" />
     <ClInclude Include="Engine\Screens\AScreenState.h" />
     <ClInclude Include="Engine\Screens\AScreensManager.h" />
     <ClInclude Include="Engine\SDL\SDLContext.h" />
