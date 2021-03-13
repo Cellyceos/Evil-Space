@@ -16,7 +16,7 @@ AScreensManager::AScreensManager(const TSharedPtr<IScreensCreator>& InScreensCre
 
 AScreensManager::~AScreensManager()
 {
-	SDL_Log("~AScreensManager\n");
+	LOG("~AScreensManager\n");
 }
 
 void AScreensManager::Update(float DeltaTime)
@@ -141,7 +141,7 @@ void AScreensManager::OnWindowsFocusGained()
 		}
 	}
 
-	SDL_Log("Windows Focus Gained");
+	LOG("Windows Focus Gained\n");
 }
 
 void AScreensManager::OnWindowsFocusLost()
@@ -154,6 +154,6 @@ void AScreensManager::OnWindowsFocusLost()
 		}
 	}
 
-	SDL_Log("Windows Focus Lost");
+	LOG("Windows Focus Lost\n");
 }
 /// End IMessageHandler

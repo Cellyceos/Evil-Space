@@ -8,9 +8,8 @@
 
 #include "SDL/SDLRenderer.h"
 
-#include "SDL.h"
-#include "SDL_ttf.h"
-#include "SDL_image.h"
+#include "SDL_render.h"
+#include "SDL_messagebox.h"
 
 
 #ifdef DEBUG_UI
@@ -24,7 +23,7 @@ TSharedPtr<SDLRenderer> SDLRenderer::Construct(SDL_Window* Window)
 	if (!NativeRenderer)
 	{
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Unable to create renderer. See the log for more info.", NULL);
-		SDL_LogCritical(SDL_LOG_CATEGORY_APPLICATION, "Unable to create window, error: %s", SDL_GetError());
+		LOG_CRITICAL("Unable to create window, error: %s", SDL_GetError());
 		return nullptr;
 	}
 
@@ -42,23 +41,11 @@ SDLRenderer::~SDLRenderer()
 	SDL_Log("~SDLRenderer\n");
 
 #ifdef USE_SDL_TTF
-	for (auto& [FontKey, Font] : FontNameCache)
-	{
-		TTF_CloseFont(Font);
-		Font = nullptr;
-	}
-
-	FontNameCache.clear();
+	ClearFontResources();
 #endif
 
 #ifdef USE_SDL_IMG
-	for (auto& [ImageName, ImageTexture] : ImageNameCache)
-	{
-		SDL_DestroyTexture(ImageTexture);
-		ImageTexture = nullptr;
-	}
-
-	ImageNameCache.clear();
+	ClearImageResources();
 #endif // USE_SDL_IMG
 
 	if (NativeRenderer)
@@ -165,6 +152,8 @@ void SDLRenderer::Present()
 }
 
 #ifdef USE_SDL_TTF
+#include "SDL_ttf.h"
+
 TMap <FFontKey, TTF_Font*> SDLRenderer::FontNameCache;
 
 bool SDLRenderer::SetFont(const FStringView& FontName, const int32 FontSize)
@@ -245,9 +234,22 @@ void SDLRenderer::DrawText(const FStringView& Text, const FPoint& Position, ETex
 	SDL_FreeSurface(Surface);
 	SDL_DestroyTexture(Texture);
 }
+
+void SDLRenderer::ClearFontResources()
+{
+	for (auto& [FontKey, Font] : FontNameCache)
+	{
+		TTF_CloseFont(Font);
+		Font = nullptr;
+	}
+
+	FontNameCache.clear();
+}
 #endif
 
 #ifdef USE_SDL_IMG
+#include "SDL_image.h"
+
 TMap <FStringView, SDL_Texture*> SDLRenderer::ImageNameCache;
 
 void SDLRenderer::DrawImage(const FStringView& ImageName, const FPoint& Center, const float Rotation, const EFlipOperation Flip/* = EFlipOperation::None */)
@@ -274,5 +276,21 @@ void SDLRenderer::DrawImage(const FStringView& ImageName, const FPoint& Center, 
 
 	const SDL_FPoint NativeCenter{ Center.X, Center.Y };
 	SDL_RenderCopyExF(NativeRenderer, ImageTexture, nullptr, nullptr, Rotation, &NativeCenter, static_cast<SDL_RendererFlip>(Flip));
+
+#ifdef DEBUG_UI
+	SetColor(DebugColor);
+	FillRect({ Center.X - 2.0f, Center.Y - 2.0f, 4.0f, 4.0f });
+#endif //DEBUG_UI
+}
+
+void SDLRenderer::ClearImageResources()
+{
+	for (auto& [ImageName, ImageTexture] : ImageNameCache)
+	{
+		SDL_DestroyTexture(ImageTexture);
+		ImageTexture = nullptr;
+	}
+
+	ImageNameCache.clear();
 }
 #endif // USE_SDL_IMG

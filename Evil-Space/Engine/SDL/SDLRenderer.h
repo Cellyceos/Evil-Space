@@ -86,6 +86,8 @@ public:
 private:
 	struct _TTF_Font* CurrentFont = nullptr;
 	static TMap <FFontKey, struct _TTF_Font*> FontNameCache;
+
+	void ClearFontResources();
 #endif // USE_SDL_TTF
 
 #ifdef USE_SDL_IMG
@@ -94,6 +96,8 @@ public:
 
 private:
 	static TMap <FStringView, struct SDL_Texture*> ImageNameCache;
+
+	void ClearImageResources();
 #endif // USE_SDL_IMG
 
 
