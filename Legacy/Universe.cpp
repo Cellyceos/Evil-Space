@@ -8,7 +8,7 @@
 #include "BigExplosion.h"
 #include "GameTicks.h"
 
-wstring& Universe::UniversePath = *new wstring(L"Universe\\");
+wstring& Universe::UniversePath = *new wstring(L"Stars\\");
 wstring Universe::starNameArr[] = { L"Star00.tif", L"Star01.tif", L"Star02.tif", 
 								L"Star03.tif", L"Star04.tif", L"Star05.tif", 
 								L"Star06.tif", L"Star07.tif", L"Star08.tif"};

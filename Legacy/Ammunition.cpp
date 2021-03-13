@@ -7,7 +7,7 @@
 #include "Ship.h"
 #include "GDIBitmap.h"
 
-wstring& Ammunition::AmmunitionPath = *new wstring(L"Ammunition\\");
+wstring& Ammunition::AmmunitionPath = *new wstring(L"Ammunitions\\");
 
 Ammunition::Ammunition(Ship* aship) : InteractiveObject(aship->Maps, aship->Compositors)
 						, DefaultHealth(1)

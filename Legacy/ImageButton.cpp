@@ -8,7 +8,7 @@ using namespace Gdiplus;
 
 ImageButton::ImageButton(int x, int y, wstring path, int width, int height) : _image(NULL), TargetLocatiaon(NULL), TargetSize(NULL), OnClick(NULL), status(Default), Enabled(false)
 {
-	_image = new GDIBitmap(GameObject::ContentPath + L"Button\\" + path);
+	_image = new GDIBitmap(GameObject::ContentPath + L"UI\\Buttons\\" + path);
 
 	int nWidth = width > 0 ? width : (int)_image->GetWidth();
 	int nHeight = height > 0 ? height : (int)_image->GetHeight();

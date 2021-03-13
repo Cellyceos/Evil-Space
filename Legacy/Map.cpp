@@ -4,7 +4,7 @@
 #include "GDIBitmap.h"
 #include "GameObject.h"
 
-wstring& Map::MapPath = *new wstring(L"Backgraund\\");
+wstring& Map::MapPath = *new wstring(L"Backgrounds\\");
 RectF& Map::CameraRect = *new RectF(0, 0, 1024, 768);
 
 Map::Map() : rnd(NULL), _image(NULL), AreaPoint(*new PointF(0.0f, 0.0f))

@@ -12,7 +12,7 @@
 #include "Random.h"
 #include "Ammunition.h"
 
-wstring Asteroid::AsteroidPath = L"Asteroid\\";
+wstring Asteroid::AsteroidPath = L"Asteroids\\";
 wstring Asteroid::AsteroidNameArr[] = { L"00.tif", L"01.tif", L"02.tif", L"03.tif",
 										L"04.tif", L"05.tif", L"06.tif", L"07.tif", 
 										L"08.tif", L"09.tif", L"10.tif", L"11.tif", 

@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "Map.h"
 
-wstring& Bonus::BonusPath = *new wstring(L"Bonus\\");
+wstring& Bonus::BonusPath = *new wstring(L"Bonuses\\");
 
 Bonus::Bonus(Map* map, Compositor* compositor) : InteractiveObject(map, compositor), DefaultHealth(1), MaxTime(1000), DefaultPoints(5), time(0), _image(NULL)
 {

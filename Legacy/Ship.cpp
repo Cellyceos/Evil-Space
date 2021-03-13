@@ -7,7 +7,7 @@
 #include "Random.h"
 #include "Ammunition.h"
 
-wstring Ship::ShipPath = L"Ship\\";
+wstring Ship::ShipPath = L"Ships\\";
 
 Ship::Ship(Map* map, Compositor* compositor)
 							: InteractiveObject(map,compositor)

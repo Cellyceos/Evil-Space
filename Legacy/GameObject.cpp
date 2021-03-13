@@ -6,7 +6,7 @@
 
 Random& GameObject::Randomizer = *new Random(GetTickCount()&2147483647);
 
-wstring& GameObject::ContentPath = *new wstring(L"Data\\");
+wstring& GameObject::ContentPath = *new wstring(L"Assets\\");
 
 GameObject::GameObject(Map *map, Compositor *compositor): MaxDirections(359.99f)
 													, Maps(map)
