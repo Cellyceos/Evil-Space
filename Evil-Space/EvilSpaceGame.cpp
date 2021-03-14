@@ -47,7 +47,6 @@ int32 EvilSpaceGame::Loop()
 		ScreensManager->Draw(MainWindow->GetRenderer());
 
 		FixedFrameRate.WaitForFixedRate();
-		LOG("FPS: %lld\n", FixedFrameRate.GetCurrentFrameRate());
 	}
 
 	return EXIT_SUCCESS;
