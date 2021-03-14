@@ -6,7 +6,6 @@ This is my coursework from 2010 (2nd year of university) based on Win32 API and 
 * Visual Studio 2019 or above
 * SDL 2.0.14 or above
 * SDL_ttf 2.0.15 or above
-* SDL_image 2.0.5 or above
 * Dotnet framework 4.5 or above (for tools)
 
 ### License
