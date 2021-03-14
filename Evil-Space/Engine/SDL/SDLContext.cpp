@@ -10,8 +10,14 @@
 
 #ifdef USE_SDL
 #include "SDL.h"
+
+#ifdef USE_SDL_TTF
 #include "SDL_ttf.h"
+#endif // USE_SDL_TTF
+
+#ifdef USE_SDL_IMG
 #include "SDL_image.h"
+#endif // USE_SDL_IMG
 
 #include "Engine/Logging/Macros.h"
 
