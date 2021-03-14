@@ -21,7 +21,7 @@ SDLWindow::SDLWindow()
 
 SDLWindow::~SDLWindow()
 {
-	SDL_Log("~SDLWindow\n");
+	LOG("~SDLWindow\n");
 	Renderer = nullptr;
 
 	if (NativeWindow)

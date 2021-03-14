@@ -38,7 +38,7 @@ SDLRenderer::SDLRenderer(SDL_Renderer* Renderer) : NativeRenderer(Renderer)
 
 SDLRenderer::~SDLRenderer()
 {
-	SDL_Log("~SDLRenderer\n");
+	LOG("~SDLRenderer\n");
 
 #ifdef USE_SDL_TTF
 	ClearFontResources();
@@ -166,7 +166,7 @@ bool SDLRenderer::SetFont(const FStringView& FontName, const int32 FontSize)
 		CurrentFont = TTF_OpenFont(FontName.data(), FontSize);
 		if (!CurrentFont)
 		{
-			SDL_LogError(SDL_LOG_CATEGORY_RENDER, "TTF ERROR: %s", SDL_GetError());
+			LOG_ERROR("TTF ERROR: %s", SDL_GetError());
 			return false;
 		}
 
@@ -263,7 +263,7 @@ void SDLRenderer::DrawImage(const FStringView& ImageName, const FPoint& Center, 
 		ImageTexture = IMG_LoadTexture(NativeRenderer, ImageName.data());
 		if (!ImageTexture)
 		{
-			SDL_LogError(SDL_LOG_CATEGORY_RENDER, "IMG ERROR: %s", SDL_GetError());
+			LOG_ERROR("IMG ERROR: %s", SDL_GetError());
 			return;
 		}
 

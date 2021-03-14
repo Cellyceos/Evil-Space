@@ -20,6 +20,12 @@
 #endif
 
 #ifdef _DEBUG
+#define LOG_ERROR(DebugStr, ...) SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, DebugStr, ##__VA_ARGS__)
+#else
+#define LOG_ERROR(DebugStr, ...)
+#endif
+
+#ifdef _DEBUG
 #define LOG_CRITICAL(DebugStr, ...) SDL_LogCritical(SDL_LOG_CATEGORY_APPLICATION, DebugStr, ##__VA_ARGS__)
 #else
 #define LOG_CRITICAL(DebugStr, ...)
