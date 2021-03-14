@@ -129,6 +129,8 @@
     <ClCompile Include="Engine\Screens\AScreenState.cpp" />
     <ClCompile Include="Engine\Screens\AScreensManager.cpp" />
     <ClCompile Include="EvilSpaceGame.cpp" />
+    <ClCompile Include="Game\Screens\AMainScreen.cpp" />
+    <ClCompile Include="Game\Screens\FScreensCreator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Engine\SDL\SDLContext.cpp" />
     <ClCompile Include="Engine\SDL\SDLRenderer.cpp" />
@@ -151,6 +153,8 @@
     <ClInclude Include="Engine\CoreMinimal.h" />
     <ClInclude Include="Engine\AObject.h" />
     <ClInclude Include="EvilSpaceGame.h" />
+    <ClInclude Include="Game\Screens\AMainScreen.h" />
+    <ClInclude Include="Game\Screens\FScreensCreator.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Assets\Ammunitions\W02_F.tif" />

@@ -15,7 +15,7 @@
 class AScreensManager : public IMessageHandler, public std::enable_shared_from_this<AScreensManager>
 {
 public:
-    AScreensManager(const TSharedPtr<IScreensCreator>& ScreensCreator);
+    AScreensManager(TUniquePtr<IScreensCreator>&& ScreensCreator);
 	virtual ~AScreensManager();
 
     void Update(float DeltaTime);
@@ -42,10 +42,10 @@ protected:
     /// End IMessageHandler
 
 private:
-    const TSharedPtr<IScreensCreator> ScreensCreator;
+    const TUniquePtr<const IScreensCreator> ScreensCreator;
     
     FColor BackgroundColor{ 30, 30, 30, 255 };
-    int32 RequestScreenId{ IScreensCreator::InvalidRequestId };
+    int32 RequestScreenId{ IScreensCreator::InvalidScreenId };
 
-    TArray<TSharedPtr<AScreenState>> ActiveScreens;
+    TArray<TUniquePtr<AScreenState>> ActiveScreens;
 };

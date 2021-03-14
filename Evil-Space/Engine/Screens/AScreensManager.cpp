@@ -9,9 +9,10 @@
 #include "Screens/AScreensManager.h"
 
 
-AScreensManager::AScreensManager(const TSharedPtr<IScreensCreator>& InScreensCreator) : ScreensCreator(InScreensCreator)
+AScreensManager::AScreensManager(TUniquePtr<IScreensCreator>&& InScreensCreator) : ScreensCreator(std::move(InScreensCreator))
 {
 	ActiveScreens.reserve(ScreensCreator->GetScreensCount());
+	RequestScreenTransition(IScreensCreator::DefaultScreenId);
 }
 
 AScreensManager::~AScreensManager()
@@ -21,7 +22,7 @@ AScreensManager::~AScreensManager()
 
 void AScreensManager::Update(float DeltaTime)
 {
-	if (RequestScreenId != IScreensCreator::InvalidRequestId)
+	if (RequestScreenId != IScreensCreator::InvalidScreenId)
 	{
 		TransitState();
 	}
@@ -73,7 +74,7 @@ void AScreensManager::TransitState()
 		ActiveScreens.erase(ActiveScreens.begin(), EndIter);
 	}
 
-	RequestScreenId = IScreensCreator::InvalidRequestId;
+	RequestScreenId = IScreensCreator::InvalidScreenId;
 }
 
 void AScreensManager::RequestToQuit()

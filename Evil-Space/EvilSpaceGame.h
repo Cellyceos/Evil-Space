@@ -20,6 +20,6 @@ public:
 	int32 Loop();
 
 private:
-	TSharedPtr<AWindowClass> MainWindow = nullptr;
+	TUniquePtr<AWindowClass> MainWindow = nullptr;
 	TSharedPtr<class AScreensManager> ScreensManager = nullptr;
 };

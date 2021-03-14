@@ -98,6 +98,12 @@
     <ClCompile Include="EvilSpaceGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Screens\FScreensCreator.cpp">
+      <Filter>Source Files\Game\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Screens\AMainScreen.cpp">
+      <Filter>Source Files\Game\Screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\SDL\SDLWindow.h">
@@ -147,6 +153,12 @@
     </ClInclude>
     <ClInclude Include="Engine\Logging\Macros.h">
       <Filter>Source Files\Engine\Logging</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Screens\FScreensCreator.h">
+      <Filter>Source Files\Game\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Screens\AMainScreen.h">
+      <Filter>Source Files\Game\Screens</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
