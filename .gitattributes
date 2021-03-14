@@ -1,0 +1,2 @@
+*.hai filter=lfs diff=lfs merge=lfs -text
+*.gai filter=lfs diff=lfs merge=lfs -text
