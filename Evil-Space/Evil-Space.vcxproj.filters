@@ -160,6 +160,9 @@
     <ClInclude Include="Game\Screens\AMainScreen.h">
       <Filter>Source Files\Game\Screens</Filter>
     </ClInclude>
+    <ClInclude Include="Game\GameConfig.h">
+      <Filter>Source Files\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Assets\Ammunitions\W02_F.tif">

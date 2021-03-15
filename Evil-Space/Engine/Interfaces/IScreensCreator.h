@@ -8,7 +8,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
 #include "Screens/AScreenState.h"
 
 struct IScreensCreator

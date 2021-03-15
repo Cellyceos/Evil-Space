@@ -8,8 +8,6 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
-
 
 enum class EInputState
 {

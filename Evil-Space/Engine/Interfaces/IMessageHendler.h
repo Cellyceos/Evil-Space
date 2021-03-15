@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "Input/InputEvents.h"
 
 class IMessageHandler
 {

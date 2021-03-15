@@ -153,6 +153,7 @@
     <ClInclude Include="Engine\CoreMinimal.h" />
     <ClInclude Include="Engine\AObject.h" />
     <ClInclude Include="EvilSpaceGame.h" />
+    <ClInclude Include="Game\GameConfig.h" />
     <ClInclude Include="Game\Screens\AMainScreen.h" />
     <ClInclude Include="Game\Screens\FScreensCreator.h" />
   </ItemGroup>
