@@ -24,7 +24,7 @@ TSharedPtr<SDLRenderer> SDLRenderer::Construct(SDL_Window* Window)
 	if (!NativeRenderer)
 	{
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Unable to create renderer. See the log for more info.", NULL);
-		LOG_CRITICAL("Unable to create window, error: %s", SDL_GetError());
+		LOG_CRITICAL("Unable to create renderer, error: %s", SDL_GetError());
 		return nullptr;
 	}
 
@@ -44,10 +44,6 @@ SDLRenderer::~SDLRenderer()
 #ifdef USE_SDL_TTF
 	ClearFontResources();
 #endif
-
-#ifdef USE_SDL_IMG
-	ClearImageResources();
-#endif // USE_SDL_IMG
 
 	if (NativeRenderer)
 	{
@@ -147,6 +143,62 @@ void SDLRenderer::FillCircle(const FPoint& Center, float Radius)
 	}
 }
 
+void SDLRenderer::DrawSurface(const TSharedPtr<ASurfaceClass>& Surface, const FPoint& Position, EJustify Justify /* = EJustify::CenteredMiddle */)
+{
+	SDL_Texture* Texture = SDL_CreateTextureFromSurface(NativeRenderer, Surface->GetNativeSurface());
+	DrawTextureInternal(Texture, Position, Justify);
+	SDL_DestroyTexture(Texture);
+}
+
+void SDLRenderer::DrawTextureInternal(struct SDL_Texture* Texture, const FPoint& Position, EJustify Justify)
+{
+	int32 TextureWidth{ 0 }, TextureHeight{ 0 };
+	SDL_QueryTexture(Texture, nullptr, nullptr, &TextureWidth, &TextureHeight);
+
+	SDL_FRect DestRect = { Position.X, Position.Y, static_cast<float>(TextureWidth), static_cast<float>(TextureHeight) };
+
+	switch (Justify)
+	{
+	case EJustify::LeftTop:
+		DestRect.x -= TextureWidth;
+		break;
+	case EJustify::LeftMiddle:
+		DestRect.x -= TextureWidth;
+		DestRect.y -= TextureHeight * 0.5f;
+		break;
+	case EJustify::LeftBottom:
+		DestRect.x -= TextureWidth;
+		DestRect.y -= TextureHeight;
+		break;
+	case EJustify::CenteredTop:
+		DestRect.x -= TextureWidth * 0.5f;
+		break;
+	case EJustify::CenteredMiddle:
+		DestRect.x -= TextureWidth * 0.5f;
+		DestRect.y -= TextureHeight * 0.5f;
+		break;
+	case EJustify::CenteredBottom:
+		DestRect.x -= TextureWidth * 0.5f;
+		DestRect.y -= TextureHeight;
+		break;
+	case EJustify::RightTop:
+		break;
+	case EJustify::RightMiddle:
+		DestRect.y -= TextureHeight * 0.5f;
+		break;
+	case EJustify::RightBottom:
+		DestRect.y -= TextureHeight;
+		break;
+	}
+
+	SDL_RenderCopyF(NativeRenderer, Texture, nullptr, &DestRect);
+
+#ifdef DEBUG_UI
+	SetColor(DebugColor);
+	FillRect({ Position.X - 2.0f, Position.Y - 2.0f, 4.0f, 4.0f });
+#endif //DEBUG_UI
+}
+
 void SDLRenderer::Present()
 {
 	SDL_RenderPresent(NativeRenderer);
@@ -181,56 +233,12 @@ bool SDLRenderer::SetFont(const FStringView& FontName, const int32 FontSize)
 	return true;
 }
 
-void SDLRenderer::DrawText(const FStringView& Text, const FPoint& Position, ETextJustify Justify, const FColor& Color)
+void SDLRenderer::DrawText(const FStringView& Text, const FPoint& Position, EJustify Justify, const FColor& Color)
 {
 	SDL_Surface* Surface = TTF_RenderText_Blended(CurrentFont, Text.data(), { Color.Red, Color.Green, Color.Blue, Color.Alpha });
 	SDL_Texture* Texture = SDL_CreateTextureFromSurface(NativeRenderer, Surface);
 
-	int32 TextureWidth{ 0 }, TextureHeight{ 0 };
-	SDL_QueryTexture(Texture, nullptr, nullptr, &TextureWidth, &TextureHeight);
-
-	SDL_FRect DestRect = { Position.X, Position.Y, static_cast<float>(TextureWidth), static_cast<float>(TextureHeight) };
-
-	switch (Justify)
-	{
-	case ETextJustify::LeftTop:
-		DestRect.x -= TextureWidth;
-		break;
-	case ETextJustify::LeftMiddle:
-		DestRect.x -= TextureWidth;
-		DestRect.y -= TextureHeight * 0.5f;
-		break;
-	case ETextJustify::LeftBottom:
-		DestRect.x -= TextureWidth;
-		DestRect.y -= TextureHeight;
-		break;
-	case ETextJustify::CenteredTop:
-		DestRect.x -= TextureWidth * 0.5f;
-		break;
-	case ETextJustify::CenteredMiddle:
-		DestRect.x -= TextureWidth * 0.5f;
-		DestRect.y -= TextureHeight * 0.5f;
-		break;
-	case ETextJustify::CenteredBottom:
-		DestRect.x -= TextureWidth * 0.5f;
-		DestRect.y -= TextureHeight;
-		break;
-	case ETextJustify::RightTop:
-		break;
-	case ETextJustify::RightMiddle:
-		DestRect.y -= TextureHeight * 0.5f;
-		break;
-	case ETextJustify::RightBottom:
-		DestRect.y -= TextureHeight;
-		break;
-	}
-
-	SDL_RenderCopyF(NativeRenderer, Texture, nullptr, &DestRect);
-
-#ifdef DEBUG_UI
-	SetColor(DebugColor);
-	FillRect({ Position.X - 2.0f, Position.Y - 2.0f, 4.0f, 4.0f });
-#endif //DEBUG_UI
+	DrawTextureInternal(Texture, Position, Justify);
 
 	SDL_FreeSurface(Surface);
 	SDL_DestroyTexture(Texture);
@@ -247,51 +255,3 @@ void SDLRenderer::ClearFontResources()
 	FontNameCache.clear();
 }
 #endif
-
-#ifdef USE_SDL_IMG
-#include "SDL_image.h"
-
-TMap <FStringView, SDL_Texture*> SDLRenderer::ImageNameCache;
-
-void SDLRenderer::DrawImage(const FStringView& ImageName, const FPoint& Center, const float Rotation, const EFlipOperation Flip/* = EFlipOperation::None */)
-{
-	SDL_Texture* ImageTexture{ nullptr };
-
-	auto CachedImage = ImageNameCache.find(ImageName);
-
-	if (CachedImage == ImageNameCache.end())
-	{
-		ImageTexture = IMG_LoadTexture(NativeRenderer, ImageName.data());
-		if (!ImageTexture)
-		{
-			LOG_ERROR("IMG ERROR: %s", SDL_GetError());
-			return;
-		}
-
-		ImageNameCache.insert(std::make_pair(ImageName, ImageTexture));
-	}
-	else
-	{
-		ImageTexture = CachedImage->second;
-	}
-
-	const SDL_FPoint NativeCenter{ Center.X, Center.Y };
-	SDL_RenderCopyExF(NativeRenderer, ImageTexture, nullptr, nullptr, Rotation, &NativeCenter, static_cast<SDL_RendererFlip>(Flip));
-
-#ifdef DEBUG_UI
-	SetColor(DebugColor);
-	FillRect({ Center.X - 2.0f, Center.Y - 2.0f, 4.0f, 4.0f });
-#endif //DEBUG_UI
-}
-
-void SDLRenderer::ClearImageResources()
-{
-	for (auto& [ImageName, ImageTexture] : ImageNameCache)
-	{
-		SDL_DestroyTexture(ImageTexture);
-		ImageTexture = nullptr;
-	}
-
-	ImageNameCache.clear();
-}
-#endif // USE_SDL_IMG
