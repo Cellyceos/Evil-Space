@@ -10,6 +10,9 @@
 #include "Screens/AScreensManager.h"
 
 
+#include "Formats/FHAIFormat.h"
+
+
 AMainScreen::AMainScreen(const TWeakPtr<class AScreensManager>& InOwner) : AScreenState(InOwner)
 {
 
@@ -23,6 +26,7 @@ AMainScreen::~AMainScreen()
 void AMainScreen::Init()
 {
 	BindKey(EInputKey::Escape, std::bind(&AMainScreen::Quit, this, _1));
+	Image = FHAIFormat::Load("Assets/PirateSpecial3.hai");
 }
 
 void AMainScreen::Quit(EInputState KeyEvent)
@@ -43,5 +47,5 @@ void AMainScreen::Update(float DeltaTime)
 
 void AMainScreen::Draw(const TSharedPtr<ARendererClass>& Renderer) const
 {
-
+	Image->Draw(Renderer);
 }

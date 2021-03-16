@@ -25,4 +25,6 @@ public:
 
 private:
 	void Quit(EInputState KeyEvent);
+
+	TUniquePtr<class FHAIFormat> Image = nullptr;
 };

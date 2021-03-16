@@ -66,6 +66,9 @@
     <Filter Include="Source Files\Engine\Logging">
       <UniqueIdentifier>{310eff07-878f-4f91-8d81-3e3f3145d7c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\Formats">
+      <UniqueIdentifier>{b4f37a86-1859-4349-a994-0b70c84f7fbf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -103,6 +106,9 @@
     </ClCompile>
     <ClCompile Include="Game\Screens\AMainScreen.cpp">
       <Filter>Source Files\Game\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Formats\FHAIFormat.cpp">
+      <Filter>Source Files\Game\Formats</Filter>
     </ClCompile>
     <ClCompile Include="Engine\SDL\SDLSurface.cpp">
       <Filter>Source Files\Engine\SDL</Filter>
@@ -168,6 +174,9 @@
     </ClInclude>
     <ClInclude Include="Game\GameConfig.h">
       <Filter>Source Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Formats\FHAIFormat.h">
+      <Filter>Source Files\Game\Formats</Filter>
     </ClInclude>
     <ClInclude Include="Engine\SDL\SDLSurface.h">
       <Filter>Source Files\Engine\SDL</Filter>
