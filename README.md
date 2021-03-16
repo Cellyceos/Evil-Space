@@ -1,5 +1,5 @@
 # Evil-Space
-This is my coursework from 2010 (2nd year of university) based on Win32 API and GDI+ and port to SDL in 2021. Resources taken from greatest game [Space Rangers 2 Dominators](https://en.wikipedia.org/wiki/Space_Rangers_2:_Dominators).
+This is my coursework from 2010 (2nd year of university) based on Win32 API and GDI+ and port to SDL in 2021. Resources taken from greatest game [Space Rangers HD: A War Apart](https://en.wikipedia.org/wiki/Space_Rangers_2:_Dominators).
 
 ### Requirements
 
