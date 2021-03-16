@@ -7,6 +7,7 @@
 //
 
 #include "SDL/SDLRenderer.h"
+#include "Logging/Macros.h"
 
 #include "SDL_render.h"
 #include "SDL_messagebox.h"
