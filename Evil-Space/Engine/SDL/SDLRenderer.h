@@ -64,14 +64,14 @@ public:
 	virtual void DrawCircle(const FPoint& Center, float Radius);
 	virtual void FillCircle(const FPoint& Center, float Radius);
 
-	virtual void DrawSurface(const TSharedPtr<ASurfaceClass>& Surface, const FPoint& Position, EJustify Justify = EJustify::CenteredMiddle);
+	virtual void DrawSurface(const TSharedPtr<const ASurfaceClass>& Surface, const FPoint& Position, float Rotation, EJustify Justify = EJustify::CenteredMiddle);
 
 	virtual struct SDL_Renderer* GetNativeRenderer() const { return NativeRenderer; }
 
 private:
 	struct SDL_Renderer* NativeRenderer = nullptr;
 
-	void DrawTextureInternal(struct SDL_Texture* Texture, const FPoint& Position, EJustify Justify);
+	void DrawTextureInternal(struct SDL_Texture* Texture, const FPoint& Position, float Rotation, EJustify Justify);
 
 #ifdef USE_SDL_TTF
 public:

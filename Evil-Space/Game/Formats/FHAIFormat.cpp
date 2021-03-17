@@ -53,7 +53,6 @@ TUniquePtr<FHAIFormat> FHAIFormat::Load(const FStringView& FileName)
 			{
 				HAIFile = std::make_unique<FHAIFormat>();
 				HAIFile->Frames.reserve(FileHeader.FrameCount);
-				HAIFile->FrameCount = FileHeader.FrameCount;
 				HAIFile->Height = static_cast<float>(FileHeader.Height);
 				HAIFile->Width = static_cast<float>(FileHeader.Width);
 
@@ -78,12 +77,4 @@ TUniquePtr<FHAIFormat> FHAIFormat::Load(const FStringView& FileName)
 	}
 
 	return std::move(HAIFile);
-}
-
-void FHAIFormat::Draw(const TSharedPtr<ARendererClass>& Renderer) const
-{
-	static uint32 FrameNum = 0;
-	Renderer->DrawSurface(Frames[FrameNum], { 200.0f, 300.0f});
-	
-	FrameNum = (FrameNum + 1) % FrameCount;
 }

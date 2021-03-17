@@ -19,11 +19,15 @@ public:
 
     virtual ~FHAIFormat();
 
-    void Draw(const TSharedPtr<ARendererClass>& Renderer) const;
+    float GetWidth() const { return Width; }
+    float GetHeight() const { return Height; }
+
+    TSharedPtr<const ASurfaceClass> GetFrame(uint32 FrameIdx) const { return Frames[FrameIdx]->shared_from_this(); }
+    uint32 GetFrameCount() const { return static_cast<uint32>(Frames.size()); }
+
 private:
     float Width{ 0.0f };
     float Height{ 0.0f };
-    uint32 FrameCount{ 0 };
 
     TArray<TSharedPtr<ASurfaceClass>> Frames;
 };

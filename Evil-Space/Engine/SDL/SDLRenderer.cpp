@@ -143,14 +143,14 @@ void SDLRenderer::FillCircle(const FPoint& Center, float Radius)
 	}
 }
 
-void SDLRenderer::DrawSurface(const TSharedPtr<ASurfaceClass>& Surface, const FPoint& Position, EJustify Justify /* = EJustify::CenteredMiddle */)
+void SDLRenderer::DrawSurface(const TSharedPtr<const ASurfaceClass>& Surface, const FPoint& Position, float Rotation, EJustify Justify /* = EJustify::CenteredMiddle */)
 {
-	DrawTextureInternal(Texture, Position, Justify);
 	SDL_Texture* Texture = SDL_CreateTextureFromSurface(NativeRenderer, Surface->NativeSurface);
+	DrawTextureInternal(Texture, Position, Rotation, Justify);
 	SDL_DestroyTexture(Texture);
 }
 
-void SDLRenderer::DrawTextureInternal(struct SDL_Texture* Texture, const FPoint& Position, EJustify Justify)
+void SDLRenderer::DrawTextureInternal(struct SDL_Texture* Texture, const FPoint& Position, float Rotation, EJustify Justify)
 {
 	int32 TextureWidth{ 0 }, TextureHeight{ 0 };
 	SDL_QueryTexture(Texture, nullptr, nullptr, &TextureWidth, &TextureHeight);
@@ -191,7 +191,7 @@ void SDLRenderer::DrawTextureInternal(struct SDL_Texture* Texture, const FPoint&
 		break;
 	}
 
-	SDL_RenderCopyF(NativeRenderer, Texture, nullptr, &DestRect);
+	SDL_RenderCopyExF(NativeRenderer, Texture, nullptr, &DestRect, Rotation, nullptr, SDL_FLIP_NONE);
 
 #ifdef DEBUG_UI
 	SetColor(DebugColor);
@@ -238,7 +238,7 @@ void SDLRenderer::DrawText(const FStringView& Text, const FPoint& Position, EJus
 	SDL_Surface* Surface = TTF_RenderText_Blended(CurrentFont, Text.data(), { Color.Red, Color.Green, Color.Blue, Color.Alpha });
 	SDL_Texture* Texture = SDL_CreateTextureFromSurface(NativeRenderer, Surface);
 
-	DrawTextureInternal(Texture, Position, Justify);
+	DrawTextureInternal(Texture, Position, 0.0f, Justify);
 
 	SDL_FreeSurface(Surface);
 	SDL_DestroyTexture(Texture);

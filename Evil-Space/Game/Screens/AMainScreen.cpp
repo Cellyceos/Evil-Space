@@ -47,5 +47,18 @@ void AMainScreen::Update(float DeltaTime)
 
 void AMainScreen::Draw(const TSharedPtr<ARendererClass>& Renderer) const
 {
-	Image->Draw(Renderer);
+	static uint32 FrameNum = 0;
+	static float Rotation = 0.0f;
+
+	const auto& FrameImage = Image->GetFrame(FrameNum);
+	Renderer->DrawSurface(FrameImage, { 200.0f, 300.0f }, Rotation);
+	Renderer->DrawSurface(FrameImage, { 600.0f, 300.0f }, -Rotation);
+
+	FrameNum = (FrameNum + 1) % Image->GetFrameCount();
+	Rotation += 1.0f;
+
+	if (Rotation >= 360.0f)
+	{
+		Rotation = 0.0f;
+	}
 }
