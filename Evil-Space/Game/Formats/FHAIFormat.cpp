@@ -55,6 +55,7 @@ TUniquePtr<FHAIFormat> FHAIFormat::Load(const FStringView& FileName)
 				HAIFile->Frames.reserve(FileHeader.FrameCount);
 				HAIFile->Height = static_cast<float>(FileHeader.Height);
 				HAIFile->Width = static_cast<float>(FileHeader.Width);
+				HAIFile->FileName = FString(std::filesystem::path(FileName).filename().u8string());
 
 				TArray<uint8> Pixels(FileHeader.FrameSize - FileHeader.PalleteSize);
 				TArray<uint8> Colors(FileHeader.PalleteSize);
