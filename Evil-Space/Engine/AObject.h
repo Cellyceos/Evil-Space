@@ -8,7 +8,8 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "BasicTypes.h"
+
 
 class AObject : public std::enable_shared_from_this<AObject>
 {

@@ -9,7 +9,7 @@
 #pragma once
 
 
-#include "CoreMinimal.h"
+#include "BasicTypes.h"
 #include "SDL_log.h"
 
 
