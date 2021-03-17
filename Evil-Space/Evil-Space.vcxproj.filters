@@ -184,6 +184,9 @@
     <ClInclude Include="Engine\SDL\SDLPalette.h">
       <Filter>Source Files\Engine\SDL</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Formats\IFIleFormat.h">
+      <Filter>Source Files\Game\Formats</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Assets\Ammunitions\W02_F.tif">

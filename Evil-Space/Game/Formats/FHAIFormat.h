@@ -8,10 +8,10 @@
 
 #pragma once
 
-#include "CoreMinimal.h"
+#include "IFIleFormat.h"
 
 
-class FHAIFormat
+class FHAIFormat : public IFIleFormat
 {
 public:
     static constexpr float FRAME_TIME{ 50.0f };
@@ -19,19 +19,9 @@ public:
 
     virtual ~FHAIFormat();
 
-    float GetWidth() const { return Width; }
-    float GetHeight() const { return Height; }
-
-    const FString GetFileName() const { return FileName; }
-
-    TSharedPtr<const ASurfaceClass> GetFrame(uint32 FrameIdx) const { return Frames[FrameIdx]->shared_from_this(); }
-    uint32 GetFrameCount() const { return static_cast<uint32>(Frames.size()); }
+    virtual TSharedPtr<const ASurfaceClass> GetFrame(uint32 FrameIdx) const override { return Frames[FrameIdx]->shared_from_this(); }
+    virtual uint32 GetFrameCount() const override { return static_cast<uint32>(Frames.size()); }
 
 private:
-    FString FileName;
-
-    float Width{ 0.0f };
-    float Height{ 0.0f };
-
     TArray<TSharedPtr<ASurfaceClass>> Frames;
 };

@@ -36,6 +36,7 @@ namespace
 
 FHAIFormat::~FHAIFormat()
 {
+
 }
 
 TUniquePtr<FHAIFormat> FHAIFormat::Load(const FStringView& FileName)
