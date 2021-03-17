@@ -145,8 +145,8 @@ void SDLRenderer::FillCircle(const FPoint& Center, float Radius)
 
 void SDLRenderer::DrawSurface(const TSharedPtr<ASurfaceClass>& Surface, const FPoint& Position, EJustify Justify /* = EJustify::CenteredMiddle */)
 {
-	SDL_Texture* Texture = SDL_CreateTextureFromSurface(NativeRenderer, Surface->GetNativeSurface());
 	DrawTextureInternal(Texture, Position, Justify);
+	SDL_Texture* Texture = SDL_CreateTextureFromSurface(NativeRenderer, Surface->NativeSurface);
 	SDL_DestroyTexture(Texture);
 }
 

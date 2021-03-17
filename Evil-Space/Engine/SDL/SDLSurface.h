@@ -34,7 +34,7 @@ enum class EPixelFormatType
 };
 
 
-class SDLSurface
+class SDLSurface : public std::enable_shared_from_this<SDLSurface>
 {
 public:
     explicit SDLSurface(struct SDL_Surface* SurfacePtr);
@@ -52,9 +52,11 @@ public:
     static TSharedPtr<SDLSurface> Construct(const TArray<uint8>& Pixels, int32 Width, int32 Height, int32 Depth, EPixelFormatType PixelFormat);
 
 private:
+    friend class SDLRenderer;
     struct SDL_Surface* NativeSurface = nullptr;
 
 #ifdef USE_SDL_IMG
+public:
     static TSharedPtr<SDLSurface> Construct(const FStringView& ImageName);
 #endif
 };
