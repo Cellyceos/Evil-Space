@@ -39,8 +39,6 @@ SDLRenderer::SDLRenderer(SDL_Renderer* Renderer) : NativeRenderer(Renderer)
 
 SDLRenderer::~SDLRenderer()
 {
-	LOG("~SDLRenderer\n");
-
 #ifdef USE_SDL_TTF
 	ClearFontResources();
 #endif
@@ -50,6 +48,8 @@ SDLRenderer::~SDLRenderer()
 		SDL_DestroyRenderer(NativeRenderer);
 		NativeRenderer = nullptr;
 	}
+
+	LOG("~SDLRenderer\n");
 }
 
 void SDLRenderer::Clear(const FColor& Color)

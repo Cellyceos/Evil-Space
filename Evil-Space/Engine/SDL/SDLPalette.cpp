@@ -7,8 +7,10 @@
 //
 
 #include "SDL/SDLPalette.h"
+#include "Logging/Macros.h"
 
 #include "SDL_pixels.h"
+
 
 SDLPalette::SDLPalette(SDL_Palette* PalettePtr) : NativePalette(PalettePtr)
 {
@@ -22,6 +24,8 @@ SDLPalette::~SDLPalette()
 		SDL_FreePalette(NativePalette);
 		NativePalette = nullptr;
 	}
+
+	LOG("~SDLPalette\n");
 }
 
 TSharedPtr<SDLPalette> SDLPalette::Construct(const TArray<uint8>& Colors)

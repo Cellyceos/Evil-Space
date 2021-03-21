@@ -45,6 +45,8 @@ SDLSurface::~SDLSurface()
 		SDL_FreeSurface(NativeSurface);
 		NativeSurface = nullptr;
 	}
+
+	LOG("~SDLSurface\n");
 }
 
 TSharedPtr<SDLSurface> SDLSurface::Construct(const TArray<uint8>& Pixels, int32 Width, int32 Height, int32 Depth,

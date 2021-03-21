@@ -55,8 +55,6 @@ SDLContext::SDLContext()
 
 SDLContext::~SDLContext()
 {
-	LOG("~SDLContext\n");
-
 #ifdef USE_SDL_IMG
 	IMG_Quit();
 #endif // USE_SDL_ING
@@ -66,5 +64,7 @@ SDLContext::~SDLContext()
 #endif // USE_SDL_TTF
 
 	SDL_Quit();
+
+	LOG("~SDLContext\n");
 }
 #endif // USE_SDL

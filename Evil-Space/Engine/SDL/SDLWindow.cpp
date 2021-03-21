@@ -21,7 +21,6 @@ SDLWindow::SDLWindow()
 
 SDLWindow::~SDLWindow()
 {
-	LOG("~SDLWindow\n");
 	Renderer = nullptr;
 
 	if (NativeWindow)
@@ -29,6 +28,8 @@ SDLWindow::~SDLWindow()
 		SDL_DestroyWindow(NativeWindow);
 		NativeWindow = nullptr;
 	}
+
+	LOG("~SDLWindow\n");
 }
 
 bool SDLWindow::CreateWindow(const FStringView& Title, int32 Width, int32 Height)
