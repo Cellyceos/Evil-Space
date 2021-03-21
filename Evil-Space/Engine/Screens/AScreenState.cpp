@@ -10,11 +10,11 @@
 #include "Screens/AScreensManager.h"
 
 
-void AScreenState::RequestTransition(int32 ScreenId)
+void AScreenState::RequestTransition(int32 ScreenId, int32 Reason)
 {
 	if (!Owner.expired())
 	{
-		Owner.lock()->RequestScreenTransition(ScreenId);
+		Owner.lock()->RequestScreenTransition(shared_from_this(), ScreenId, Reason);
 	}
 }
 

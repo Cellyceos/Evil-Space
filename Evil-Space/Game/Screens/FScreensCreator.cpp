@@ -15,9 +15,9 @@ int32 FScreensCreator::GetScreensCount() const
 	return 1;
 }
 
-TUniquePtr<AScreenState> FScreensCreator::operator()(const TWeakPtr<class AScreensManager>& Owner, int32 StateID) const
+TSharedPtr<AScreenState> FScreensCreator::operator()(const TWeakPtr<class AScreensManager>& Owner, int32 StateID) const
 {
-	auto NewScreen = std::make_unique<AMainScreen>(Owner);
+	auto NewScreen = std::make_shared<AMainScreen>(Owner);
 
 	if (NewScreen)
 	{

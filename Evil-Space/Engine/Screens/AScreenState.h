@@ -11,7 +11,7 @@
 #include "BasicTypes.h"
 #include "Interfaces/IInputHendler.h"
 
-class AScreenState : public IInputHandler
+class AScreenState : public IInputHandler, public std::enable_shared_from_this<AScreenState>
 {
 public:
 	AScreenState(const TWeakPtr<class AScreensManager>& InOwner) : Owner(InOwner) { }
@@ -31,7 +31,7 @@ public:
 	virtual void OnWindowsGainFocus() {}
 	virtual void OnWindowsLostFocus() {}
 
-	virtual void RequestTransition(int32 ScreenId);
+	virtual void RequestTransition(int32 ScreenId, int32 Reason);
 
 protected:
 	TWeakPtr<class AScreensManager> Owner;

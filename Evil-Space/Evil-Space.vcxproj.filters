@@ -187,6 +187,9 @@
     <ClInclude Include="Game\Formats\IFIleFormat.h">
       <Filter>Source Files\Game\Formats</Filter>
     </ClInclude>
+    <ClInclude Include="Engine\Interfaces\IScreenRequestSolver.h">
+      <Filter>Source Files\Engine\Interfaces</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Assets\Ammunitions\W02_F.tif">

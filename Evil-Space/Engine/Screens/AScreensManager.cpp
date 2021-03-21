@@ -9,10 +9,11 @@
 #include "Screens/AScreensManager.h"
 
 
-AScreensManager::AScreensManager(TUniquePtr<IScreensCreator>&& InScreensCreator) : ScreensCreator(std::move(InScreensCreator))
+AScreensManager::AScreensManager(TUniquePtr<IScreensCreator>&& InScreensCreator, TUniquePtr<IScreenRequestSolver>&& InScreenRequestSolver /* = nullptr */) : 
+	ScreensCreator(std::move(InScreensCreator)), ScreenRequestSolver(std::move(InScreenRequestSolver))
 {
-	ActiveScreens.reserve(ScreensCreator->GetScreensCount());
-	RequestScreenTransition(IScreensCreator::DefaultScreenId);
+	ActiveScreens.reserve(ScreensCreator->GetScreensCount());	
+	RequestScreenId = ScreensCreator->DefaultScreenId;
 }
 
 AScreensManager::~AScreensManager()
@@ -52,6 +53,18 @@ void AScreensManager::Draw(const TSharedPtr<ARendererClass>& Renderer) const
 
 	// Draw All States if needed
 	Renderer->Present();
+}
+
+void AScreensManager::RequestScreenTransition(const TSharedPtr<AScreenState>& Requester, int32 ScreenId, int32 Reason /* = IScreenRequestSolver::Default */)
+{ 
+	if (ActiveScreens.size() > 0)
+	{
+		auto& ActiveScreen = ActiveScreens.front();
+		if (ActiveScreen->GetId() == Requester->GetId() || (ScreenRequestSolver && (*ScreenRequestSolver)(Requester, ScreenId, Reason)))
+		{
+			RequestScreenId = ScreenId;
+		}
+	}
 }
 
 void AScreensManager::TransitState()

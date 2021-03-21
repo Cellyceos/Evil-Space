@@ -11,8 +11,9 @@
 #include "BasicTypes.h"
 #include "Input/InputEvents.h"
 
+
 using FInputDelegate = TFunction<void(EInputState)>;
-class IInputHandler : public std::enable_shared_from_this<IInputHandler>
+class IInputHandler
 {
 public:
 	IInputHandler() = default;
