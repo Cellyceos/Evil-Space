@@ -211,11 +211,11 @@ void SDLRenderer::Present()
 #ifdef USE_SDL_TTF
 #include "SDL_ttf.h"
 
-TMap <FFontKey, TTF_Font*> SDLRenderer::FontNameCache;
+TUnorderedMap <uint64, TTF_Font*> SDLRenderer::FontNameCache;
 
 bool SDLRenderer::SetFont(const FStringView& FontName, const int32 FontSize)
 {
-	const FFontKey FontKey{ FontName, FontSize };
+	const uint64 FontKey{ std::hash<FStringView>{}(FontName) ^ (static_cast<uint64>(FontSize) << 1ll) };
 	auto CachedFont = FontNameCache.find(FontKey);
 
 	if (CachedFont == FontNameCache.end())

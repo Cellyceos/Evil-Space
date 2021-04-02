@@ -24,24 +24,6 @@ enum class EJustify {
 	RightBottom
 };
 
-#ifdef USE_SDL_TTF
-struct FFontKey
-{
-	FStringView FontName;
-	int32 FontSize;
-
-	friend bool operator <(const FFontKey& Left, const FFontKey& Right)
-	{
-		if (Left.FontName == Right.FontName)
-		{
-			return Left.FontSize < Right.FontSize;
-		}
-
-		return Left.FontSize > Right.FontSize && Left.FontName < Right.FontName;
-	}
-};
-#endif // USE_SDL_TTF
-
 
 class SDLRenderer
 {
@@ -80,7 +62,7 @@ public:
 
 private:
 	struct _TTF_Font* CurrentFont = nullptr;
-	static TMap <FFontKey, struct _TTF_Font*> FontNameCache;
+	static TUnorderedMap <uint64, struct _TTF_Font*> FontNameCache;
 
 	void ClearFontResources();
 #endif // USE_SDL_TTF
