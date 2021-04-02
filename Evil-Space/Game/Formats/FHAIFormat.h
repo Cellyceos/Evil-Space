@@ -19,9 +19,9 @@ public:
 
     virtual ~FHAIFormat();
 
-    virtual TSharedPtr<const ASurfaceClass> GetFrame(uint32 FrameIdx) const override { return Frames[FrameIdx]->shared_from_this(); }
+    virtual TSharedPtr<ATextureClass> GetFrame(uint32 FrameIdx) const override { return Frames[FrameIdx]->shared_from_this(); }
     virtual uint32 GetFrameCount() const override { return static_cast<uint32>(Frames.size()); }
 
 private:
-    TArray<TSharedPtr<ASurfaceClass>> Frames;
+    TArray<TSharedPtr<ATextureClass>> Frames;
 };

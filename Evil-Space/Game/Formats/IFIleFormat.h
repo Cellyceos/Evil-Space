@@ -23,7 +23,7 @@ public:
 
     const FString GetFileName() const { return FileName; }
 
-    virtual TSharedPtr<const ASurfaceClass> GetFrame(uint32 FrameIdx) const = 0;
+    virtual TSharedPtr<ATextureClass> GetFrame(uint32 FrameIdx) const = 0;
     virtual uint32 GetFrameCount() const = 0;
 
 protected:

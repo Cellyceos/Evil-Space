@@ -129,7 +129,7 @@
     <ClCompile Include="Engine\Screens\AScreenState.cpp" />
     <ClCompile Include="Engine\Screens\AScreensManager.cpp" />
     <ClCompile Include="Engine\SDL\SDLPalette.cpp" />
-    <ClCompile Include="Engine\SDL\SDLSurface.cpp" />
+    <ClCompile Include="Engine\SDL\SDLTexture.cpp" />
     <ClCompile Include="EvilSpaceGame.cpp" />
     <ClCompile Include="Game\Formats\FHAIFormat.cpp" />
     <ClCompile Include="Game\Screens\AMainScreen.cpp" />
@@ -154,7 +154,7 @@
     <ClInclude Include="Engine\SDL\SDLInputKeys.h" />
     <ClInclude Include="Engine\SDL\SDLPalette.h" />
     <ClInclude Include="Engine\SDL\SDLRenderer.h" />
-    <ClInclude Include="Engine\SDL\SDLSurface.h" />
+    <ClInclude Include="Engine\SDL\SDLTexture.h" />
     <ClInclude Include="Engine\SDL\SDLWindow.h" />
     <ClInclude Include="Engine\CoreMinimal.h" />
     <ClInclude Include="Engine\AObject.h" />

@@ -64,7 +64,7 @@ TUniquePtr<FHAIFormat> FHAIFormat::Load(const FStringView& FileName)
 				for (uint32 Idx = 0u; Idx < FileHeader.FrameCount; Idx++)
 				{
 					FileStream.read(reinterpret_cast<char*>(Pixels.data()), Pixels.size());
-					auto Frame = ASurfaceClass::Construct(Pixels, FileHeader.Width, FileHeader.Height, FileHeader.BitsPerPixel, FileHeader.RedMask, FileHeader.GreenMask, FileHeader.BlueMask, FileHeader.AlphaMask);
+					auto Frame = ATextureClass::Construct(Pixels, FileHeader.Width, FileHeader.Height, FileHeader.BitsPerPixel, FileHeader.RedMask, FileHeader.GreenMask, FileHeader.BlueMask, FileHeader.AlphaMask);
 					
 					FileStream.read(reinterpret_cast<char*>(Colors.data()), Colors.size());
 					auto Palette = APaletteClass::Construct(Colors);

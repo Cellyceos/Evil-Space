@@ -143,11 +143,15 @@ void SDLRenderer::FillCircle(const FPoint& Center, float Radius)
 	}
 }
 
-void SDLRenderer::DrawSurface(const TSharedPtr<const ASurfaceClass>& Surface, const FPoint& Position, float Rotation, EJustify Justify /* = EJustify::CenteredMiddle */)
+void SDLRenderer::DrawSurface(const TSharedPtr<ATextureClass>& Texture, const FPoint& Position, float Rotation, EJustify Justify /* = EJustify::CenteredMiddle */)
 {
-	SDL_Texture* Texture = SDL_CreateTextureFromSurface(NativeRenderer, Surface->NativeSurface);
-	DrawTextureInternal(Texture, Position, Rotation, Justify);
-	SDL_DestroyTexture(Texture);
+	if (Texture->bCreatedFromSurface)
+	{
+		// Need to create Texture from Surface and cache it
+		Texture->CreateTextureFromSurface(NativeRenderer);
+	}
+
+	DrawTextureInternal(Texture->NativeTexture, Position, Rotation, Justify);
 }
 
 void SDLRenderer::DrawTextureInternal(struct SDL_Texture* Texture, const FPoint& Position, float Rotation, EJustify Justify)
