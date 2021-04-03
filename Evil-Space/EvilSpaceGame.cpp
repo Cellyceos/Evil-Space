@@ -21,10 +21,11 @@ EvilSpaceGame::EvilSpaceGame()
 
 EvilSpaceGame::~EvilSpaceGame()
 {
+	ScreensManager = nullptr;
+
 	MainWindow->SetMessageHandler(nullptr);
 	MainWindow = nullptr;
 
-	ScreensManager = nullptr;
 	LOG("~EvilSpaceGame\n");
 }
 
