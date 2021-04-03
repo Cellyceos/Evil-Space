@@ -9,9 +9,6 @@
 #include "FHAIFormat.h"
 #include "SDL/SDLRenderer.h"
 
-#include <fstream>
-#include <filesystem>
-
 
 namespace
 {
