@@ -1,19 +1,19 @@
 //
-//  FHAIFormat.cpp
-//  HAI File Format.
+//  FHAImageFormat.cpp
+//  HAImage File Format.
 //
 //  Created by Kirill Bravichev on 03/15/2021.
 //  Copyright (c) 2021 Cellyceos. All rights reserved.
 //
 
-#include "FHAIFormat.h"
+#include "FHAImageFormat.h"
 #include "SDL/SDLRenderer.h"
 
 
 namespace
 {
-	static constexpr uint32 HAIFormatSignature{ 0x04210420 };
-	struct FHAIHeader
+	static constexpr uint32 HAImageFormatSignature{ 0x04210420 };
+	struct FHAImageHeader
 	{
 		uint32 Signature;
 		uint32 Width;
@@ -31,29 +31,29 @@ namespace
 	};
 }
 
-FHAIFormat::~FHAIFormat()
+FHAImageFormat::~FHAImageFormat()
 {
 
 }
 
-TUniquePtr<FHAIFormat> FHAIFormat::Load(const FStringView& FileName)
+TUniquePtr<FHAImageFormat> FHAImageFormat::Load(const FStringView& FileName)
 {
-	TUniquePtr<FHAIFormat> HAIFile = nullptr;
+	TUniquePtr<FHAImageFormat> HAImageFile = nullptr;
 	if (std::filesystem::exists(FileName))
 	{
 		std::ifstream FileStream(FileName, std::ios::binary);
 		if (FileStream.is_open())
 		{
-			FHAIHeader FileHeader{ 0 };
+			FHAImageHeader FileHeader{ 0 };
 			FileStream.read(reinterpret_cast<char*>(&FileHeader), sizeof(FileHeader));
 
-			if (FileHeader.Signature == HAIFormatSignature)
+			if (FileHeader.Signature == HAImageFormatSignature)
 			{
-				HAIFile = std::make_unique<FHAIFormat>();
-				HAIFile->Frames.reserve(FileHeader.FrameCount);
-				HAIFile->Height = static_cast<float>(FileHeader.Height);
-				HAIFile->Width = static_cast<float>(FileHeader.Width);
-				HAIFile->FileName = FString(std::filesystem::path(FileName).filename().u8string());
+				HAImageFile = std::make_unique<FHAImageFormat>();
+				HAImageFile->Frames.reserve(FileHeader.FrameCount);
+				HAImageFile->Height = static_cast<float>(FileHeader.Height);
+				HAImageFile->Width = static_cast<float>(FileHeader.Width);
+				HAImageFile->FileName = FString(std::filesystem::path(FileName).filename().u8string());
 
 				TArray<uint8> Pixels(FileHeader.FrameSize - FileHeader.PalleteSize);
 				TArray<uint8> Colors(FileHeader.PalleteSize);
@@ -67,7 +67,7 @@ TUniquePtr<FHAIFormat> FHAIFormat::Load(const FStringView& FileName)
 					auto Palette = APaletteClass::Construct(Colors);
 					Frame->SetColorPalette(Palette);
 
-					HAIFile->Frames.push_back(Frame);
+					HAImageFile->Frames.push_back(Frame);
 				}
 			}
 
@@ -75,5 +75,5 @@ TUniquePtr<FHAIFormat> FHAIFormat::Load(const FStringView& FileName)
 		}
 	}
 
-	return std::move(HAIFile);
+	return std::move(HAImageFile);
 }

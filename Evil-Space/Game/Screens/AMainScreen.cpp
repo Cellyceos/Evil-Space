@@ -10,7 +10,7 @@
 #include "Screens/AScreensManager.h"
 
 
-#include "Formats/FHAIFormat.h"
+#include "Formats/FHAImageFormat.h"
 
 
 AMainScreen::AMainScreen(const TWeakPtr<class AScreensManager>& InOwner) : AScreenState(InOwner)
@@ -26,7 +26,7 @@ AMainScreen::~AMainScreen()
 void AMainScreen::Init()
 {
 	BindKey(EInputKey::Escape, std::bind(&AMainScreen::Quit, this, _1));
-	Image = FHAIFormat::Load("Assets/PirateSpecial3.hai");
+	HAImage = FHAImageFormat::Load("Assets/PirateSpecial3.hai");
 }
 
 void AMainScreen::Quit(EInputState KeyEvent)
@@ -50,11 +50,11 @@ void AMainScreen::Draw(const TSharedPtr<ARendererClass>& Renderer) const
 	static uint32 FrameNum = 0;
 	static float Rotation = 0.0f;
 
-	const auto& FrameImage = Image->GetFrame(FrameNum);
+	const auto& FrameImage = HAImage->GetFrame(FrameNum);
 	Renderer->DrawSurface(FrameImage, { 200.0f, 300.0f }, Rotation);
 	Renderer->DrawSurface(FrameImage, { 600.0f, 300.0f }, -Rotation);
 
-	FrameNum = (FrameNum + 1) % Image->GetFrameCount();
+	FrameNum = (FrameNum + 1) % HAImage->GetFrameCount();
 	Rotation += 1.0f;
 
 	if (Rotation >= 360.0f)
