@@ -58,6 +58,9 @@ TSharedPtr<SDLTexture> SDLTexture::Construct(const TArray<uint8>& Pixels, int32 
 {
 	if (SDL_Surface* NativeSurface = SDL_CreateRGBSurface(0, Width, Height, Depth, RedMask, GreenMask, BlueMask, AlphaMask))
 	{
+		// Fix pitch for surface
+		NativeSurface->pitch = Width * NativeSurface->format->BytesPerPixel;
+
 		SDL_LockSurface(NativeSurface);
 		std::memcpy(NativeSurface->pixels, Pixels.data(), Pixels.size());
 		SDL_UnlockSurface(NativeSurface);
