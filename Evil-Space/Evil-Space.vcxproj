@@ -160,7 +160,7 @@
     <ClInclude Include="Engine\CoreMinimal.h" />
     <ClInclude Include="Engine\AObject.h" />
     <ClInclude Include="EvilSpaceGame.h" />
-    <ClInclude Include="Game\Formats\IFIleFormat.h" />
+    <ClInclude Include="Game\Formats\IFileFormat.h" />
     <ClInclude Include="Game\Formats\FGImageFormat.h" />
     <ClInclude Include="Game\Formats\FHAImageFormat.h" />
     <ClInclude Include="Game\GameConfig.h" />
