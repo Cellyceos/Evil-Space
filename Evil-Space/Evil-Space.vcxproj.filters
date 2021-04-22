@@ -116,6 +116,9 @@
     <ClCompile Include="Engine\SDL\SDLPalette.cpp">
       <Filter>Source Files\Engine\SDL</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Formats\FGImageFormat.cpp">
+      <Filter>Source Files\Game\Formats</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\SDL\SDLWindow.h">
@@ -183,6 +186,9 @@
     </ClInclude>
     <ClInclude Include="Engine\SDL\SDLPalette.h">
       <Filter>Source Files\Engine\SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Formats\FGImageFormat.h">
+      <Filter>Source Files\Game\Formats</Filter>
     </ClInclude>
     <ClInclude Include="Game\Formats\IFIleFormat.h">
       <Filter>Source Files\Game\Formats</Filter>

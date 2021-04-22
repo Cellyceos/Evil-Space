@@ -27,4 +27,5 @@ private:
 	void Quit(EInputState KeyEvent);
 
 	TUniquePtr<class FHAImageFormat> HAImage = nullptr;
+	TUniquePtr<class FGImageFormat> GImage = nullptr;
 };

@@ -11,6 +11,7 @@
 
 
 #include "Formats/FHAImageFormat.h"
+#include "Formats/FGImageFormat.h"
 
 
 AMainScreen::AMainScreen(const TWeakPtr<class AScreensManager>& InOwner) : AScreenState(InOwner)
@@ -27,6 +28,7 @@ void AMainScreen::Init()
 {
 	BindKey(EInputKey::Escape, std::bind(&AMainScreen::Quit, this, _1));
 	HAImage = FHAImageFormat::Load("Assets/PirateSpecial3.hai");
+	GImage = FGImageFormat::Load("Assets/Star00.gi");
 }
 
 void AMainScreen::Quit(EInputState KeyEvent)
@@ -61,4 +63,6 @@ void AMainScreen::Draw(const TSharedPtr<ARendererClass>& Renderer) const
 	{
 		Rotation = 0.0f;
 	}
+
+	Renderer->DrawSurface(GImage->GetFrame(), { 400.0f, 300.0f }, 0.0f);
 }

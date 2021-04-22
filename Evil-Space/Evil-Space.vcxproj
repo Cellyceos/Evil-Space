@@ -131,6 +131,7 @@
     <ClCompile Include="Engine\SDL\SDLPalette.cpp" />
     <ClCompile Include="Engine\SDL\SDLTexture.cpp" />
     <ClCompile Include="EvilSpaceGame.cpp" />
+    <ClCompile Include="Game\Formats\FGImageFormat.cpp" />
     <ClCompile Include="Game\Formats\FHAImageFormat.cpp" />
     <ClCompile Include="Game\Screens\AMainScreen.cpp" />
     <ClCompile Include="Game\Screens\FScreensCreator.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Engine\AObject.h" />
     <ClInclude Include="EvilSpaceGame.h" />
     <ClInclude Include="Game\Formats\IFIleFormat.h" />
+    <ClInclude Include="Game\Formats\FGImageFormat.h" />
     <ClInclude Include="Game\Formats\FHAImageFormat.h" />
     <ClInclude Include="Game\GameConfig.h" />
     <ClInclude Include="Game\Screens\AMainScreen.h" />
