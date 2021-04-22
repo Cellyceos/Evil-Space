@@ -46,7 +46,7 @@ public:
 	virtual void DrawCircle(const FPoint& Center, float Radius);
 	virtual void FillCircle(const FPoint& Center, float Radius);
 
-	virtual void DrawSurface(const TSharedPtr<ATextureClass>& Surface, const FPoint& Position, float Rotation, EJustify Justify = EJustify::CenteredMiddle);
+	virtual void DrawTexture(const TSharedPtr<ATextureClass>& Surface, const FPoint& Position, float Rotation, EJustify Justify = EJustify::CenteredMiddle);
 
 	virtual struct SDL_Renderer* GetNativeRenderer() const { return NativeRenderer; }
 

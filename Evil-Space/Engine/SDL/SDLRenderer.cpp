@@ -143,7 +143,7 @@ void SDLRenderer::FillCircle(const FPoint& Center, float Radius)
 	}
 }
 
-void SDLRenderer::DrawSurface(const TSharedPtr<ATextureClass>& Texture, const FPoint& Position, float Rotation, EJustify Justify /* = EJustify::CenteredMiddle */)
+void SDLRenderer::DrawTexture(const TSharedPtr<ATextureClass>& Texture, const FPoint& Position, float Rotation, EJustify Justify /* = EJustify::CenteredMiddle */)
 {
 	if (Texture->bCreatedFromSurface)
 	{

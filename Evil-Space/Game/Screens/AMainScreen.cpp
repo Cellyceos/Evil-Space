@@ -53,8 +53,8 @@ void AMainScreen::Draw(const TSharedPtr<ARendererClass>& Renderer) const
 	static float Rotation = 0.0f;
 
 	const auto& FrameImage = HAImage->GetFrame(FrameNum);
-	Renderer->DrawSurface(FrameImage, { 200.0f, 300.0f }, Rotation);
-	Renderer->DrawSurface(FrameImage, { 600.0f, 300.0f }, -Rotation);
+	Renderer->DrawTexture(FrameImage, { 200.0f, 300.0f }, Rotation);
+	Renderer->DrawTexture(FrameImage, { 600.0f, 300.0f }, -Rotation);
 
 	FrameNum = (FrameNum + 1) % HAImage->GetFrameCount();
 	Rotation += 1.0f;
@@ -64,5 +64,5 @@ void AMainScreen::Draw(const TSharedPtr<ARendererClass>& Renderer) const
 		Rotation = 0.0f;
 	}
 
-	Renderer->DrawSurface(GImage->GetFrame(), { 400.0f, 300.0f }, 0.0f);
+	Renderer->DrawTexture(GImage->GetFrame(), { 400.0f, 300.0f }, 0.0f);
 }
