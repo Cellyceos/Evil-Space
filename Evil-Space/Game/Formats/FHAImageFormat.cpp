@@ -33,7 +33,7 @@ namespace
 
 FHAImageFormat::~FHAImageFormat()
 {
-
+	LOG("~FHAImageFormat()");
 }
 
 TUniquePtr<FHAImageFormat> FHAImageFormat::Load(const FStringView& FileName)
