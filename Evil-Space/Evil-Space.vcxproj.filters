@@ -190,7 +190,7 @@
     <ClInclude Include="Game\Formats\FGImageFormat.h">
       <Filter>Source Files\Game\Formats</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Formats\IFIleFormat.h">
+    <ClInclude Include="Game\Formats\IFileFormat.h">
       <Filter>Source Files\Game\Formats</Filter>
     </ClInclude>
     <ClInclude Include="Engine\Interfaces\IScreenRequestSolver.h">
