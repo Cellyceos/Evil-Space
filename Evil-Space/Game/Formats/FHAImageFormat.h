@@ -8,10 +8,10 @@
 
 #pragma once
 
-#include "IFIleFormat.h"
+#include "IFileFormat.h"
 
 
-class FHAImageFormat : public IFIleFormat
+class FHAImageFormat : public IFileFormat
 {
 public:
     static constexpr float FRAME_TIME{ 50.0f };

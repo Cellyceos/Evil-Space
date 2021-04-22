@@ -8,10 +8,10 @@
 
 #pragma once
 
-#include "IFIleFormat.h"
+#include "IFileFormat.h"
 
 
-class FGImageFormat : public IFIleFormat
+class FGImageFormat : public IFileFormat
 {
 public:
     static TUniquePtr<FGImageFormat> Load(const FStringView& FileName);

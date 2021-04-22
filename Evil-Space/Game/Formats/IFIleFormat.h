@@ -11,12 +11,12 @@
 #include "CoreMinimal.h"
 
 
-class IFIleFormat
+class IFileFormat
 {
 public:
-    static TUniquePtr<IFIleFormat> Load(const FStringView& FileName) { return nullptr; }
+    static TUniquePtr<IFileFormat> Load(const FStringView& FileName) { return nullptr; }
 
-    virtual ~IFIleFormat() = default;
+    virtual ~IFileFormat() = default;
 
     float GetWidth() const { return Width; }
     float GetHeight() const { return Height; }
