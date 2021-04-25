@@ -282,7 +282,7 @@ FGImageFormat::~FGImageFormat()
     LOG("~FGImageFormat");
 }
 
-TUniquePtr<FGImageFormat> FGImageFormat::Load(const FStringView& FileName)
+TUniquePtr<FGImageFormat> FGImageFormat::Load(const FPath& FileName)
 {
     TUniquePtr<FGImageFormat> GImageFile = nullptr;
     if (std::filesystem::exists(FileName))
@@ -297,7 +297,7 @@ TUniquePtr<FGImageFormat> FGImageFormat::Load(const FStringView& FileName)
             if (Signature == GImageFormatSignature)
             {
                 GImageFile = std::make_unique<FGImageFormat>();
-                GImageFile->FileName = FString(std::filesystem::path(FileName).filename().u8string());
+                GImageFile->FileName = FileName.filename().string();
                 GImageFile->Frame = LoadFrame(FileStream);
             }
 

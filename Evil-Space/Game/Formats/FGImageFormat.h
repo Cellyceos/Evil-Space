@@ -14,7 +14,7 @@
 class FGImageFormat : public IFileFormat
 {
 public:
-    static TUniquePtr<FGImageFormat> Load(const FStringView& FileName);
+    static TUniquePtr<FGImageFormat> Load(const FPath& FileName);
     static TSharedPtr<ATextureClass> LoadFrame(std::ifstream& FileStream);
 
     virtual ~FGImageFormat();

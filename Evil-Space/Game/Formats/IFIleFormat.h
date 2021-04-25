@@ -14,7 +14,7 @@
 class IFileFormat
 {
 public:
-    static TUniquePtr<IFileFormat> Load(const FStringView& FileName) { return nullptr; }
+    static TUniquePtr<IFileFormat> Load(const FPath& FileName) { return nullptr; }
 
     virtual ~IFileFormat() = default;
 

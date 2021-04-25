@@ -46,6 +46,8 @@ template<class T> using TWeakPtr = std::weak_ptr<T>;
 using FString = std::string;
 using FStringView = std::string_view;
 
+using FPath = std::filesystem::path;
+
 template<class Key, class T> using TMap = std::map<Key, T>;
 template<class Key, class T> using TUnorderedMap = std::unordered_map<Key, T>;
 

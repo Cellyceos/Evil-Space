@@ -15,7 +15,7 @@ class FHAImageFormat : public IFileFormat
 {
 public:
     static constexpr float FRAME_TIME{ 50.0f };
-    static TUniquePtr<FHAImageFormat> Load(const FStringView& FileName);
+    static TUniquePtr<FHAImageFormat> Load(const FPath& FileName);
 
     virtual ~FHAImageFormat();
 

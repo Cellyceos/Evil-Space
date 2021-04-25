@@ -36,7 +36,7 @@ FHAImageFormat::~FHAImageFormat()
 	LOG("~FHAImageFormat()");
 }
 
-TUniquePtr<FHAImageFormat> FHAImageFormat::Load(const FStringView& FileName)
+TUniquePtr<FHAImageFormat> FHAImageFormat::Load(const FPath& FileName)
 {
 	TUniquePtr<FHAImageFormat> HAImageFile = nullptr;
 	if (std::filesystem::exists(FileName))
@@ -53,7 +53,7 @@ TUniquePtr<FHAImageFormat> FHAImageFormat::Load(const FStringView& FileName)
 				HAImageFile->Frames.reserve(FileHeader.FrameCount);
 				HAImageFile->Height = static_cast<float>(FileHeader.Height);
 				HAImageFile->Width = static_cast<float>(FileHeader.Width);
-				HAImageFile->FileName = FString(std::filesystem::path(FileName).filename().u8string());
+				HAImageFile->FileName = FileName.filename().string();
 
 				TArray<uint8> Pixels(FileHeader.FrameSize - FileHeader.PalleteSize);
 				TArray<uint8> Colors(FileHeader.PalleteSize);
