@@ -65,6 +65,6 @@ SDLContext::~SDLContext()
 
 	SDL_Quit();
 
-	LOG("~SDLContext\n");
+	LOG("~SDLContext");
 }
 #endif // USE_SDL
