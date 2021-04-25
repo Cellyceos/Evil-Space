@@ -24,7 +24,7 @@ TSharedPtr<SDLRenderer> SDLRenderer::Construct(SDL_Window* Window)
 	if (!NativeRenderer)
 	{
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Unable to create renderer. See the log for more info.", NULL);
-		LOG_CRITICAL("Unable to create renderer, error: %s", SDL_GetError());
+		LOG_ERROR("Unable to create renderer, error: {:s}", SDL_GetError());
 		return nullptr;
 	}
 
@@ -223,7 +223,7 @@ bool SDLRenderer::SetFont(const FStringView& FontName, const int32 FontSize)
 		CurrentFont = TTF_OpenFont(FontName.data(), FontSize);
 		if (!CurrentFont)
 		{
-			LOG_ERROR("TTF ERROR: %s", SDL_GetError());
+			LOG_ERROR("TTF ERROR: {:s}", SDL_GetError());
 			return false;
 		}
 

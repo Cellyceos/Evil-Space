@@ -29,7 +29,7 @@ SDLContext::SDLContext()
 	if (SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Unable to init SDL2. See the log for more info.", NULL);
-		LOG_CRITICAL("Unable to init SDL2, error: %s", SDL_GetError());
+		LOG_CRITICAL("Unable to init SDL2, error: {:s}", SDL_GetError());
 		exit(1);
 	}
 
@@ -37,7 +37,7 @@ SDLContext::SDLContext()
 	if (TTF_Init() != 0)
 	{
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Unable to init SDL_ttf lib. See the log for more info.", NULL);
-		LOG_CRITICAL("Unable to init SDL_ttf, error: %s", SDL_GetError());
+		LOG_CRITICAL("Unable to init SDL_ttf, error: {:s}", SDL_GetError());
 		exit(1);
 	}
 #endif // USE_SDL_TTF
@@ -46,7 +46,7 @@ SDLContext::SDLContext()
 	if (IMG_Init(IMG_INIT_TIF | IMG_INIT_PNG | IMG_INIT_WEBP) == 0)
 	{
 		SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", "Unable to init SDL_image lib. See the log for more info.", NULL);
-		LOG_CRITICAL("Unable to init SDL_image, error: %s", SDL_GetError());
+		LOG_CRITICAL("Unable to init SDL_image, error: {:s}", SDL_GetError());
 		exit(1);
 	}
 #endif // USE_SDL_ING

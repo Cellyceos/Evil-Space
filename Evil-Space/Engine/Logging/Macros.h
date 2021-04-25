@@ -42,7 +42,9 @@ struct ADebugLogging
 	template<typename FormatType, typename ...Args>
 	static constexpr void exception(const char* file, const int line, const char* function, FormatType str, Args... args)
 	{
-		throw std::runtime_error(format(file, line, function, str, args...));
+		const auto& text = format(file, line, function, str, args...);
+		fmt::print(fg(fmt::color::red), text);
+		throw std::runtime_error(text);
 	}
 };
 

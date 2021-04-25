@@ -68,7 +68,7 @@ TSharedPtr<SDLTexture> SDLTexture::Construct(const TArray<uint8>& Pixels, int32 
 		return std::make_shared<SDLTexture>(NativeSurface);
 	}
 
-	LOG_CRITICAL("Unable to create surface, error: %s", SDL_GetError());
+	LOG_ERROR("Unable to create surface, error: {:s}", SDL_GetError());
 	return nullptr;
 }
 
@@ -99,7 +99,7 @@ TSharedPtr<SDLTexture> SDLTexture::Construct(const TArray<uint8>& Pixels, int32 
 		return std::make_shared<SDLTexture>(NativeSurface);
 	}
 
-	LOG_CRITICAL("Unable to create surface, error: %s", SDL_GetError());
+	LOG_ERROR("Unable to create surface, error: {:s}", SDL_GetError());
 	return nullptr;
 }
 
@@ -113,7 +113,7 @@ static TSharedPtr<SDLTexture> SDLTexture::Construct(const FStringView& ImageName
 		return std::make_shared<SDLTexture>(NativeSurface);
 	}
 
-	LOG_CRITICAL("Unable to load image, error: %s", SDL_GetError());
+	LOG_ERROR("Unable to load image, error: {:s}", SDL_GetError());
 	return nullptr;
 }
 #endif

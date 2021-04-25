@@ -40,7 +40,7 @@ namespace
 				Result = SDL_AllocFormat(static_cast<uint32>(FormatKey));
 				if (!Result)
 				{
-					LOG_ERROR("SDL ERROR: %s", SDL_GetError());
+					LOG_ERROR("SDL ERROR: {:s}", SDL_GetError());
 					return nullptr;
 				}
 
