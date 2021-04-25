@@ -8,6 +8,7 @@ This is my coursework from 2010 (2nd year of university) based on Win32 API and 
 * SDL_ttf 2.0.15 or above
 * entt 3.0.17 or above
 * glm 0.9.9.8 or above
+* fmt 7.1.3 or above
 * Dotnet framework 4.5 or above (for tools)
 
 ### License
