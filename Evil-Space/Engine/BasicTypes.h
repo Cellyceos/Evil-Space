@@ -62,6 +62,8 @@ template<class Key, class T> using TUnorderedMap = std::unordered_map<Key, T>;
 template<typename T> using TArray = std::vector<T>;
 template<typename T, uint64 Size> using TFixedArray = std::array<T, Size>;
 
+template<typename T> using TNumericLimits = std::numeric_limits<T>;
+
 using namespace std::placeholders;
 template<typename T> using TFunction = std::function<T>;
 

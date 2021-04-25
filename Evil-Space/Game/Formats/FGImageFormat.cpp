@@ -132,7 +132,7 @@ namespace
             FileStream.read(reinterpret_cast<char*>(&byte), sizeof(byte));
             --BytesToRead;
 
-            if (byte < 0 && byte > INT8_MIN)   //Pixels data
+            if (byte < 0 && byte > TNumericLimits<int8>::lowest())   //Pixels data
             {
                 uint16 Pixel;
                 uint8 ReadCount = byte & 0x7f;
