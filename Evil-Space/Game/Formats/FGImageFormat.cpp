@@ -260,19 +260,19 @@ namespace
 
     TSharedPtr<ATextureClass> loadFrameType3(std::ifstream& FileStream, const int64 BaseOffset, const FGImageFrameHeader& FileHeader, const TArray<FGImageLayerInfo>& LayersInfo)
     {
-        unimplemented_assert();
+        unimplemented();
         return nullptr;
     }
 
     TSharedPtr<ATextureClass> loadFrameType4(std::ifstream& FileStream, const int64 BaseOffset, const FGImageFrameHeader& FileHeader, const TArray<FGImageLayerInfo>& LayersInfo)
     {
-        unimplemented_assert();
+        unimplemented();
         return nullptr;
     }
 
     TSharedPtr<ATextureClass> loadFrameType5(std::ifstream& FileStream, const int64 BaseOffset, const FGImageFrameHeader& FileHeader, const TArray<FGImageLayerInfo>& LayersInfo)
     {
-        unimplemented_assert();
+        unimplemented();
         return nullptr;
     }
 }
