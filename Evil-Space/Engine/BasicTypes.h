@@ -30,7 +30,7 @@
 #define unimplemented() \
 	LOG_CRITICAL("unimplemented")
 #define assert(expression) \
-	if(!!(expression)) { LOG_CRITICAL((#expression)); }
+	if(!(expression)) { LOG_CRITICAL((#expression)); }
 #else
 #define assert(expression) ((void)0)
 #define unimplemented() ((void)0)
