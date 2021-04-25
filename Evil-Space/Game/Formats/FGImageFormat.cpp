@@ -117,21 +117,6 @@ namespace
         return nullptr;
    }
 
-    uint32 convert(uint32 Pixel, EPixelFormatType FromPixelFormatType, EPixelFormatType ToPixelFormatType)
-    {
-        SDL_PixelFormat* FromPixelFormat = SDL_AllocFormat(static_cast<uint32>(FromPixelFormatType));
-        SDL_PixelFormat* ToPixelFormat = SDL_AllocFormat(static_cast<uint32>(ToPixelFormatType));
-
-        uint8 Red, Green, Blue, Alpha;
-        SDL_GetRGBA(Pixel, FromPixelFormat, &Red, &Green, &Blue, &Alpha);
-        uint32 NewPixel = SDL_MapRGBA(ToPixelFormat, Red, Green, Blue, Alpha);
-
-        SDL_FreeFormat(FromPixelFormat);
-        SDL_FreeFormat(ToPixelFormat);
-
-        return NewPixel;
-    }
-
     void unpackRGB565(std::ifstream& FileStream, TArray<uint8>& Pixels)
     {
         uint32* Row = reinterpret_cast<uint32*>(Pixels.data());
@@ -157,7 +142,7 @@ namespace
                 {
                     FileStream.read(reinterpret_cast<char*>(&Pixel), sizeof(Pixel));
 
-                    *Row = convert(Pixel, EPixelFormatType::RGB16, EPixelFormatType::ARGB32);
+                    *Row = APaletteClass::ConvertPixel(Pixel, EPixelFormatType::RGB16, EPixelFormatType::ARGB32);
                     ++Row;
 
                     --ReadCount;

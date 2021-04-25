@@ -90,7 +90,7 @@ bool SDLTexture::CreateTextureFromSurface(SDL_Renderer* NativeRenderer)
 
 TSharedPtr<SDLTexture> SDLTexture::Construct(const TArray<uint8>& Pixels, int32 Width, int32 Height, EPixelFormatType PixelFormat)
 {
-	if (SDL_Surface* NativeSurface = SDL_CreateRGBSurfaceWithFormat(0, Width, Height, 0, static_cast<uint32>(PixelFormat)))
+	if (SDL_Surface* NativeSurface = SDL_CreateRGBSurfaceWithFormat(0, Width, Height, 0, APaletteClass::ConvertPixelFormat(PixelFormat)))
 	{
 		SDL_LockSurface(NativeSurface);
 		std::memcpy(NativeSurface->pixels, Pixels.data(), Pixels.size());
