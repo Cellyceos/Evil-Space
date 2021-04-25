@@ -11,25 +11,6 @@
 #include "BasicTypes.h"
 
 
-enum class EPixelFormatType : uint32
-{
-    Unknown,
-    Mono,
-    MonoLSB,
-    Indexed8,
-    RGB32,
-    ARGB32,
-    RGB16,
-    RGB555,
-    RGB888,
-    RGB444,
-    ARGB4444,
-    RGBX8888,
-    RGBA8888,
-    BGR24,
-    RGB24,
-};
-
 class SDLPalette
 {
 public:
