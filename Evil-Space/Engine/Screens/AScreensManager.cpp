@@ -18,7 +18,7 @@ AScreensManager::AScreensManager(TUniquePtr<IScreensCreator>&& InScreensCreator,
 
 AScreensManager::~AScreensManager()
 {
-	LOG("~AScreensManager\n");
+	LOG("~AScreensManager");
 }
 
 void AScreensManager::Update(float DeltaTime)
@@ -155,7 +155,7 @@ void AScreensManager::OnWindowsFocusGained()
 		}
 	}
 
-	LOG("Windows Focus Gained\n");
+	LOG("Windows Focus Gained");
 }
 
 void AScreensManager::OnWindowsFocusLost()
@@ -168,6 +168,6 @@ void AScreensManager::OnWindowsFocusLost()
 		}
 	}
 
-	LOG("Windows Focus Lost\n");
+	LOG("Windows Focus Lost");
 }
 /// End IMessageHandler

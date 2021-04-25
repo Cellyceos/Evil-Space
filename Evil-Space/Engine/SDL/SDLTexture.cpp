@@ -50,7 +50,7 @@ SDLTexture::~SDLTexture()
 		NativeTexture = nullptr;
 	}
 
-	LOG("~SDLTexture\n");
+	LOG("~SDLTexture");
 }
 
 TSharedPtr<SDLTexture> SDLTexture::Construct(const TArray<uint8>& Pixels, int32 Width, int32 Height, int32 Depth,

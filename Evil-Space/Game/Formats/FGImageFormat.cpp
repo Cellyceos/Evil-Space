@@ -113,7 +113,7 @@ namespace
             return ATextureClass::Construct(Pixels, LayerInfo.Right, LayerInfo.Bottom, BitsPerPixel, FileHeader.RedMask, FileHeader.GreenMask, FileHeader.BlueMask, FileHeader.AlphaMask);
         }
 
-        LOG_ERROR("Unknown [RGBA]Mask(s)\n");
+        LOG_ERROR("Unknown [RGBA]Mask(s)");
         return nullptr;
    }
 

@@ -8,8 +8,6 @@
 
 #pragma once
 
-#include <cassert>
-
 #include "BasicTypes.h"
 
 #ifdef USE_SDL

@@ -69,6 +69,12 @@
     <Filter Include="Source Files\Game\Formats">
       <UniqueIdentifier>{b4f37a86-1859-4349-a994-0b70c84f7fbf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ThirdParty">
+      <UniqueIdentifier>{0243084a-b5df-4fd4-8cbd-bc91e602e3a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ThirdParty\fmt">
+      <UniqueIdentifier>{cb725477-681a-429b-910f-7ddfa5d8e12c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -118,6 +124,9 @@
     </ClCompile>
     <ClCompile Include="Game\Formats\FGImageFormat.cpp">
       <Filter>Source Files\Game\Formats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\fmt\src\format.cc">
+      <Filter>Source Files\ThirdParty\fmt</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -26,7 +26,7 @@ EvilSpaceGame::~EvilSpaceGame()
 	MainWindow->SetMessageHandler(nullptr);
 	MainWindow = nullptr;
 
-	LOG("~EvilSpaceGame\n");
+	LOG("~EvilSpaceGame");
 }
 
 bool EvilSpaceGame::Init()

@@ -9,7 +9,6 @@
 #pragma once
 
 #include <cstdint>
-#include <cassert>
 #include <memory>
 
 #include <string>
@@ -27,8 +26,17 @@
 #include <filesystem>
 
 
+#ifdef _DEBUG
 #define unimplemented() \
-	assert(!"unimplemented")
+	LOG_CRITICAL("unimplemented")
+#define assert(expression) \
+	if(!!(expression)) { LOG_CRITICAL((#expression)); }
+#else
+#define assert(expression) ((void)0)
+#define unimplemented() ((void)0)
+#endif // _DEBUG
+
+
 
 using int8 = std::int8_t;
 using int16 = std::int16_t;

@@ -27,6 +27,7 @@ namespace
 			}
 
 			Cache.clear();
+			LOG("~FPicelFormatCache");
 		}
 
 		SDL_PixelFormat* CreateOrFindPixelFormat(EPixelFormatType FormatKey)
@@ -68,7 +69,7 @@ SDLPalette::~SDLPalette()
 		NativePalette = nullptr;
 	}
 
-	LOG("~SDLPalette\n");
+	LOG("~SDLPalette");
 }
 
 uint32 SDLPalette::ConvertPixel(uint32 Pixel, EPixelFormatType FromPixelFormatType, EPixelFormatType ToPixelFormatType)

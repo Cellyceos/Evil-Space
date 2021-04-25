@@ -49,7 +49,7 @@ SDLRenderer::~SDLRenderer()
 		NativeRenderer = nullptr;
 	}
 
-	LOG("~SDLRenderer\n");
+	LOG("~SDLRenderer");
 }
 
 void SDLRenderer::Clear(const FColor& Color)

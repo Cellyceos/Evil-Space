@@ -21,7 +21,7 @@ AMainScreen::AMainScreen(const TWeakPtr<class AScreensManager>& InOwner) : AScre
 
 AMainScreen::~AMainScreen()
 {
-	LOG("~AMainScreen\n");
+	LOG("~AMainScreen");
 }
 
 void AMainScreen::Init()
