@@ -137,13 +137,13 @@ struct FRect
 
 struct FAABB
 {
-	FPoint Center;
-	TFixedArray<float, 2> Radius{ 0.0f, 0.0f };
+	FPoint center;
+	TFixedArray<float, 2> radius{ };
 
 	bool Test(const FAABB& Other) const
 	{
-		if (std::fabsf(Center.x - Other.Center.x) > (Radius[0] + Other.Radius[0])) return false;
-		if (std::fabsf(Center.y - Other.Center.y) > (Radius[1] + Other.Radius[1])) return false;
+		if (glm::distance(center.x, Other.center.x) > (radius[0] + Other.radius[0])) return false;
+		if (glm::distance(center.y, Other.center.y) > (radius[1] + Other.radius[1])) return false;
 		return true;
 	}
 };

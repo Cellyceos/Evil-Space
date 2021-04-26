@@ -12,19 +12,19 @@
 void AObject::SetSize(const FSize& NewSize) 
 { 
 	Rect.size = NewSize; 
-	Aabb.Radius = { NewSize.width * 0.5f, NewSize.height * 0.5f };
+	Aabb.radius = { NewSize.width * 0.5f, NewSize.height * 0.5f };
 }
 
 void AObject::SetPosition(const FPoint& NewPos)
 { 
 	Rect.point = NewPos; 
-	Aabb.Center = { NewPos.x + Aabb.Radius[0], NewPos.y + Aabb.Radius[1] };
+	Aabb.center = { NewPos.x + Aabb.radius[0], NewPos.y + Aabb.radius[1] };
 }
 
 void AObject::SetCenterPoint(const FPoint& Point)
 {
-	Rect.point.x = Point.x - Aabb.Radius[0];
-	Rect.point.y = Point.y - Aabb.Radius[1];
+	Rect.point.x = Point.x - Aabb.radius[0];
+	Rect.point.y = Point.y - Aabb.radius[1];
 
-	Aabb.Center = Point;
+	Aabb.center = Point;
 }

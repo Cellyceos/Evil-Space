@@ -37,13 +37,13 @@ public:
 	virtual void OnCollisionEnter(const TSharedPtr<AObject>& Col) {}
 
 	virtual void SetCenterPoint(const FPoint& Point);
-	virtual FPoint GetCenterPoint() const { return Aabb.Center; }
+	virtual FPoint GetCenterPoint() const { return Aabb.center; }
 
 	virtual FAABB GetAABB() const { return Aabb; }
 
 	virtual bool ShouldBeDestroyed() const { return false; }
 
 protected:
-	FRect Rect{};
+	FRect Rect{ };
 	FAABB Aabb;
 };
