@@ -60,18 +60,18 @@ void SDLRenderer::Clear(const FColor& Color)
 
 void SDLRenderer::SetColor(const FColor& Color)
 {
-	SDL_SetRenderDrawColor(NativeRenderer, Color.Red, Color.Green, Color.Blue, Color.Alpha);
+	SDL_SetRenderDrawColor(NativeRenderer, Color.r, Color.g, Color.b, Color.a);
 }
 
 void SDLRenderer::DrawRect(const FRect& Rect)
 {	
-	const SDL_FRect NativeRect{Rect.X, Rect.Y, Rect.Width, Rect.Height};
+	const SDL_FRect NativeRect{Rect.x, Rect.y, Rect.width, Rect.height};
 	SDL_RenderDrawRectF(NativeRenderer, &NativeRect);
 }
 
 void SDLRenderer::FillRect(const FRect& Rect)
 {	
-	const SDL_FRect NativeRect{Rect.X, Rect.Y, Rect.Width, Rect.Height};
+	const SDL_FRect NativeRect{Rect.x, Rect.y, Rect.width, Rect.height};
 	SDL_RenderFillRectF(NativeRenderer, &NativeRect);
 }
 
@@ -83,14 +83,14 @@ void SDLRenderer::DrawCircle(const FPoint& Center, float Radius)
 
 	while (OffsetY >= OffsetX)
 	{
-		SDL_RenderDrawPointF(NativeRenderer, Center.X + OffsetX, Center.Y + OffsetY);
-		SDL_RenderDrawPointF(NativeRenderer, Center.X + OffsetY, Center.Y + OffsetX);
-		SDL_RenderDrawPointF(NativeRenderer, Center.X - OffsetX, Center.Y + OffsetY);
-		SDL_RenderDrawPointF(NativeRenderer, Center.X - OffsetY, Center.Y + OffsetX);
-		SDL_RenderDrawPointF(NativeRenderer, Center.X + OffsetX, Center.Y - OffsetY);
-		SDL_RenderDrawPointF(NativeRenderer, Center.X + OffsetY, Center.Y - OffsetX);
-		SDL_RenderDrawPointF(NativeRenderer, Center.X - OffsetX, Center.Y - OffsetY);
-		SDL_RenderDrawPointF(NativeRenderer, Center.X - OffsetY, Center.Y - OffsetX);
+		SDL_RenderDrawPointF(NativeRenderer, Center.x + OffsetX, Center.y + OffsetY);
+		SDL_RenderDrawPointF(NativeRenderer, Center.x + OffsetY, Center.y + OffsetX);
+		SDL_RenderDrawPointF(NativeRenderer, Center.x - OffsetX, Center.y + OffsetY);
+		SDL_RenderDrawPointF(NativeRenderer, Center.x - OffsetY, Center.y + OffsetX);
+		SDL_RenderDrawPointF(NativeRenderer, Center.x + OffsetX, Center.y - OffsetY);
+		SDL_RenderDrawPointF(NativeRenderer, Center.x + OffsetY, Center.y - OffsetX);
+		SDL_RenderDrawPointF(NativeRenderer, Center.x - OffsetX, Center.y - OffsetY);
+		SDL_RenderDrawPointF(NativeRenderer, Center.x - OffsetY, Center.y - OffsetX);
 
 		if (RadiusError >= 2.0f * OffsetX) 
 		{
@@ -119,10 +119,10 @@ void SDLRenderer::FillCircle(const FPoint& Center, float Radius)
 
 	while (OffsetY >= OffsetX) 
 	{
-		SDL_RenderDrawLineF(NativeRenderer, Center.X - OffsetY, Center.Y + OffsetX, Center.X + OffsetY, Center.Y + OffsetX);
-		SDL_RenderDrawLineF(NativeRenderer, Center.X - OffsetX, Center.Y + OffsetY, Center.X + OffsetX, Center.Y + OffsetY);
-		SDL_RenderDrawLineF(NativeRenderer, Center.X - OffsetX, Center.Y - OffsetY, Center.X + OffsetX, Center.Y - OffsetY);
-		SDL_RenderDrawLineF(NativeRenderer, Center.X - OffsetY, Center.Y - OffsetX, Center.X + OffsetY, Center.Y - OffsetX);
+		SDL_RenderDrawLineF(NativeRenderer, Center.x - OffsetY, Center.y + OffsetX, Center.x + OffsetY, Center.y + OffsetX);
+		SDL_RenderDrawLineF(NativeRenderer, Center.x - OffsetX, Center.y + OffsetY, Center.x + OffsetX, Center.y + OffsetY);
+		SDL_RenderDrawLineF(NativeRenderer, Center.x - OffsetX, Center.y - OffsetY, Center.x + OffsetX, Center.y - OffsetY);
+		SDL_RenderDrawLineF(NativeRenderer, Center.x - OffsetY, Center.y - OffsetX, Center.x + OffsetY, Center.y - OffsetX);
 
 		if (RadiusError >= 2.0f * OffsetX) 
 		{
@@ -159,7 +159,7 @@ void SDLRenderer::DrawTextureInternal(struct SDL_Texture* Texture, const FPoint&
 	int32 TextureWidth{ 0 }, TextureHeight{ 0 };
 	SDL_QueryTexture(Texture, nullptr, nullptr, &TextureWidth, &TextureHeight);
 
-	SDL_FRect DestRect = { Position.X, Position.Y, static_cast<float>(TextureWidth), static_cast<float>(TextureHeight) };
+	SDL_FRect DestRect = { Position.x, Position.y, static_cast<float>(TextureWidth), static_cast<float>(TextureHeight) };
 
 	switch (Justify)
 	{
@@ -239,7 +239,7 @@ bool SDLRenderer::SetFont(const FStringView& FontName, const int32 FontSize)
 
 void SDLRenderer::DrawText(const FStringView& Text, const FPoint& Position, EJustify Justify, const FColor& Color)
 {
-	SDL_Surface* Surface = TTF_RenderText_Blended(CurrentFont, Text.data(), { Color.Red, Color.Green, Color.Blue, Color.Alpha });
+	SDL_Surface* Surface = TTF_RenderText_Blended(CurrentFont, Text.data(), { Color.r, Color.g, Color.b, Color.a });
 	SDL_Texture* Texture = SDL_CreateTextureFromSurface(NativeRenderer, Surface);
 
 	DrawTextureInternal(Texture, Position, 0.0f, Justify);

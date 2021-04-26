@@ -22,17 +22,17 @@ public:
 	virtual void Update(float DeltaTime) { }
 	virtual void Draw(const TSharedPtr<ARendererClass>& Renderer) const = 0;
 
-	virtual FRect GetRect() const { return { Position, Size }; }
-	virtual void SetRect(const FRect& Rect);
+	virtual FRect GetRect() const { return Rect; }
+	virtual void SetRect(const FRect& InRect) { Rect = InRect; }
 
-	virtual float GetWidth() const { return Size.Width; }
-	virtual float GetHeight() const { return Size.Height; }
+	virtual float GetWidth() const { return Rect.width; }
+	virtual float GetHeight() const { return Rect.height; }
 
-	virtual FSize GetSize() const { return Size; }
+	virtual FSize GetSize() const { return Rect.size; }
 	virtual void SetSize(const FSize& NewSize);
 
 	virtual void SetPosition(const FPoint& NewPos);
-	virtual FPoint GetPosition() const { return Position; }
+	virtual FPoint GetPosition() const { return Rect.point; }
 
 	virtual void OnCollisionEnter(const TSharedPtr<AObject>& Col) {}
 
@@ -44,7 +44,6 @@ public:
 	virtual bool ShouldBeDestroyed() const { return false; }
 
 protected:
-	FPoint Position;
-	FSize Size;
+	FRect Rect{};
 	FAABB Aabb;
 };
