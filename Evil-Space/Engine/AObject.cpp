@@ -9,6 +9,12 @@
 #include "AObject.h"
 
 
+void AObject::SetRect(const FRect& InRect)
+{
+	Rect = InRect;
+	Aabb.radius = { InRect.width * 0.5f, InRect.height * 0.5f };
+}
+
 void AObject::SetSize(const FSize& NewSize) 
 { 
 	Rect.size = NewSize; 

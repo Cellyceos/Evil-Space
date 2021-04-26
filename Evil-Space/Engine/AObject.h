@@ -23,7 +23,7 @@ public:
 	virtual void Draw(const TSharedPtr<ARendererClass>& Renderer) const = 0;
 
 	virtual FRect GetRect() const { return Rect; }
-	virtual void SetRect(const FRect& InRect) { Rect = InRect; }
+	virtual void SetRect(const FRect& InRect);
 
 	virtual float GetWidth() const { return Rect.width; }
 	virtual float GetHeight() const { return Rect.height; }
