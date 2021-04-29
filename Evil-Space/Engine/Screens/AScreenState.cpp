@@ -21,7 +21,7 @@ void AScreenState::RequestTransition(int32 ScreenId, int32 Reason)
 /// Begin IInputHandler
 void AScreenState::BindKey(EInputKey KeyCode, FInputDelegate Func)
 {
-	assert(KeyBindings.find(KeyCode) == KeyBindings.end());
+	check(KeyBindings.find(KeyCode) == KeyBindings.end());
 	KeyBindings.insert(std::make_pair(KeyCode, std::move(Func)));
 }
 

@@ -32,7 +32,7 @@ SDLTexture::SDLTexture(struct SDL_Texture* TexturePtr) : NativeTexture(TexturePt
 
 void SDLTexture::SetColorPalette(const TSharedPtr<APaletteClass>& Palette)
 {
-	assert(bCreatedFromSurface);  // Should be called before first draw was call
+	check(bCreatedFromSurface);  // Should be called before first draw was call
 	SDL_SetSurfacePalette(NativeSurface, Palette->GetNativePalette());
 }
 

@@ -31,14 +31,11 @@
 #define unimplemented() \
 	LOG_CRITICAL("unimplemented")
 
-#ifdef assert
-#undef assert
-#endif // assert
-
-#define assert(expression) \
+#define check(expression) \
 	if(!(expression)) { LOG_CRITICAL((#expression)); }
 #else
 #define unimplemented() ((void)0)
+#define check() ((void)0)
 #endif // _DEBUG
 
 
