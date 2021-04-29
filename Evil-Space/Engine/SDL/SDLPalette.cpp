@@ -16,7 +16,7 @@ namespace
 {
 	static struct FPicelFormatCache
 	{
-		TMap<uint32, SDL_PixelFormat*> Cache;
+		TMap<EPixelFormatType, SDL_PixelFormat*> Cache;
 
 		~FPicelFormatCache()
 		{
@@ -30,14 +30,14 @@ namespace
 			LOG("~FPicelFormatCache");
 		}
 
-		SDL_PixelFormat* CreateOrFindPixelFormat(uint32 FormatKey)
+		SDL_PixelFormat* CreateOrFindPixelFormat(EPixelFormatType FormatKey)
 		{
 			auto CachedFormat = Cache.find(FormatKey);
 			SDL_PixelFormat* Result = nullptr;
 
 			if (CachedFormat == Cache.end())
 			{
-				Result = SDL_AllocFormat(FormatKey);
+				Result = SDL_AllocFormat(SDLPalette::ConvertPixelFormat(FormatKey));
 				if (!Result)
 				{
 					LOG_ERROR("SDL ERROR: {:s}", SDL_GetError());
@@ -74,8 +74,8 @@ SDLPalette::~SDLPalette()
 
 uint32 SDLPalette::ConvertPixel(uint32 Pixel, EPixelFormatType FromPixelFormatType, EPixelFormatType ToPixelFormatType)
 {
-	SDL_PixelFormat* FromPixelFormat = PicelFormatCache.CreateOrFindPixelFormat(ConvertPixelFormat(FromPixelFormatType));
-	SDL_PixelFormat* ToPixelFormat = PicelFormatCache.CreateOrFindPixelFormat(ConvertPixelFormat(ToPixelFormatType));
+	SDL_PixelFormat* FromPixelFormat = PicelFormatCache.CreateOrFindPixelFormat(FromPixelFormatType);
+	SDL_PixelFormat* ToPixelFormat = PicelFormatCache.CreateOrFindPixelFormat(ToPixelFormatType);
 
 	uint8 Red, Green, Blue, Alpha;
 	SDL_GetRGBA(Pixel, FromPixelFormat, &Red, &Green, &Blue, &Alpha);
