@@ -14,6 +14,9 @@ AScreensManager::AScreensManager(TUniquePtr<IScreensCreator>&& InScreensCreator,
 {
 	ActiveScreens.reserve(ScreensCreator->GetScreensCount());	
 	RequestScreenId = ScreensCreator->DefaultScreenId;
+
+	// Force Transit for Default Screen
+	TransitState();
 }
 
 AScreensManager::~AScreensManager()
@@ -60,11 +63,13 @@ void AScreensManager::RequestScreenTransition(const TSharedPtr<AScreenState>& Re
 	if (ActiveScreens.size() > 0)
 	{
 		auto& ActiveScreen = ActiveScreens.front();
-		if (ActiveScreen->GetId() == Requester->GetId() || (ScreenRequestSolver && (*ScreenRequestSolver)(Requester, ScreenId, Reason)))
+		if (ActiveScreen->GetId() != Requester->GetId() && (!ScreenRequestSolver || !(*ScreenRequestSolver)(Requester, ScreenId, Reason)))
 		{
-			RequestScreenId = ScreenId;
+			return;
 		}
 	}
+
+	RequestScreenId = ScreenId;
 }
 
 void AScreensManager::TransitState()
